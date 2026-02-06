@@ -1,0 +1,152 @@
+svg {
+  width: 200px;
+}
+
+/* CUERPO: 
+   DIFICULTAD: Al activar Flexbox, todo se ponía en una línea horizontal.
+   SOLUCIÓN: 'flex-direction: column' para apilar las secciones verticalmente.
+*/
+body {
+  display: flex;
+  flex-direction: column;
+  text-align: center; 
+  width: 100%;
+  background-color: #F5F1E9; /* Color crema para un ambiente acogedor */
+  margin: 0;
+  font-family: Arial, sans-serif; /* Tipografía limpia para lectura */
+}
+
+/* NAVEGACIÓN */
+.nav {
+  color: white;
+}
+
+/* CABECERA: 
+   DIFICULTAD: Alinear elementos de alturas distintas (Logo vs Menú).
+   SOLUCIÓN: 'align-items: center' los alinea verticalmente de forma perfecta.
+*/
+header {
+  background-color: #FDF5E6;
+  display: flex;
+  align-items: center;
+  justify-content: space-around; /* Reparto equilibrado de los elementos */
+  padding: 10px 0;
+}
+
+/* ENLACES: 
+   Convertidos en botones visuales para facilitar el clic.
+*/
+a {
+  color: #2B2B2B;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  border: 1px solid #C5A059; /* Borde dorado premium */
+  padding: 8px;
+  margin: 5px;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: #C5A059;
+  border-color: #2D5A3F;
+}
+
+/* FORMULARIO DE RESERVA */
+fieldset {
+  font-weight: bold;
+  border: 1px solid grey;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+.book_form {
+  margin-bottom: 50px;
+}
+
+button {
+  background-color: #2D5A3F;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #1e3d2a;
+}
+
+/* INPUTS Y LABELS: 
+   DIFICULTAD: Centrar elementos de formulario que son inline por defecto.
+   SOLUCIÓN: 'display: block' y 'margin: 0 auto' para alineación centrada.
+*/
+input {
+  margin-bottom: 20px;
+  display: block;
+  width: 30%;
+  max-width: 400px;
+  margin: 10px auto;
+  border: none;
+  border-bottom: 2px solid #2B2B2B; /* Estilo minimalista */
+  background: transparent;
+}
+
+label {
+  display: block;
+  width: 30%;
+  max-width: 400px;
+  margin: 0 auto;
+  font-size: 0.9rem;
+}
+
+/* ACCESIBILIDAD Y FOCUS: 
+   Resaltado cuando el usuario está escribiendo.
+*/
+:focus {
+  background-color: #FDF5E6;
+  border-radius: 4px;
+  outline: 2px solid #2D5A3F;
+}
+
+/* TEXTO DE PÁRRAFOS: 
+   Optimizados para una lectura cómoda y profesional.
+*/
+p {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+  line-height: 1.6;
+}
+
+/* --- RESPONSIVE DESIGN (Media Queries) --- 
+   DIFICULTAD: En móviles, el contenido quedaba muy estrecho o se cortaba.
+   SOLUCIÓN: Cambiamos ejes de Flexbox y anchos de inputs.
+*/
+@media (max-width: 600px) {
+  header {
+    flex-direction: column; /* Apilamos logo y menú */
+    gap: 20px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column; /* Menú en vertical para el pulgar */
+    width: 100%;
+  }
+
+  input, label {
+    width: 90%; /* Máximo aprovechamiento de pantalla pequeña */
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+}
