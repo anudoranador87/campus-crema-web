@@ -15,7 +15,11 @@ body {
   margin: 0;
   font-family: Arial, sans-serif; /* Tipografía limpia para lectura */
 }
-
+h2{
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 40px;
+}
 /* NAVEGACIÓN */
 .nav {
   color: white;
@@ -72,18 +76,44 @@ legend {
 
 button {
   background-color: #2D5A3F;
-  padding: 10px 20px;
+  padding: 10px;
   color: white;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
+  cursor: pointer; /
+  transition: transform 0.5s ease, background-color 0.5s ease; 
 }
 
 button:hover {
-  background-color: #1e3d2a;
+  background-color: khaki;
+  transform: scale(1.1); 
+  color: white;
+}
+button:active{
+  background-color: #2D5A3F;
+  color: white;
+}
+button:focus{
+  outline: 2px solid yellow;
+  text-align: justify;
 }
 
+.history{
+  display: flex;
+  text-align: justify;
+  }
+.quien-somos{
+  display: flex;
+
+
+}
+ img{
+     width: 350px;
+     height: 350px;
+     border-radius: 150px;
+     margin: 30px 20px;
+    
+     padding: 0 40px 50px;
+ }
 /* INPUTS Y LABELS: 
    DIFICULTAD: Centrar elementos de formulario que son inline por defecto.
    SOLUCIÓN: 'display: block' y 'margin: 0 auto' para alineación centrada.
@@ -95,7 +125,7 @@ input {
   max-width: 400px;
   margin: 10px auto;
   border: none;
-  border-bottom: 2px solid #2B2B2B; /* Estilo minimalista */
+  border-bottom: 2px solid #2B2B2B; 
   background: transparent;
 }
 
@@ -116,9 +146,7 @@ label {
   outline: 2px solid #2D5A3F;
 }
 
-/* TEXTO DE PÁRRAFOS: 
-   Optimizados para una lectura cómoda y profesional.
-*/
+
 p {
   max-width: 600px;
   margin: 0 auto;
@@ -126,24 +154,21 @@ p {
   line-height: 1.6;
 }
 
-/* --- RESPONSIVE DESIGN (Media Queries) --- 
-   DIFICULTAD: En móviles, el contenido quedaba muy estrecho o se cortaba.
-   SOLUCIÓN: Cambiamos ejes de Flexbox y anchos de inputs.
-*/
+
 @media (max-width: 600px) {
   header {
-    flex-direction: column; /* Apilamos logo y menú */
+    flex-direction: column; 
     gap: 20px;
   }
 
   nav {
     display: flex;
-    flex-direction: column; /* Menú en vertical para el pulgar */
+    flex-direction: column; 
     width: 100%;
   }
 
   input, label {
-    width: 90%; /* Máximo aprovechamiento de pantalla pequeña */
+    width: 90%; 
   }
 
   h1 {
