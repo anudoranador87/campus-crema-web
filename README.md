@@ -15,11 +15,20 @@ Se han realizado ajustes en la estructura CSS global para mejorar la experiencia
 
 ### Cambios realizados 07/02/2026:
 
-* **Centrado del Contenido Principal:** Se configuró la etiqueta `<main>` con un ancho del `80%` y `margin: 0 auto` para garantizar que el contenido esté siempre alineado al centro en pantallas grandes.
-* **Reseteo de Estilos (Reset CSS):** * Se eliminó el `padding` por defecto del navegador para tener un control total del espacio.
+* **Centrado del Contenido Principal:** Se configuró la etiqueta <main> con un ancho del 80 y margin: 0 auto para garantizar que el contenido esté siempre alineado al centro en pantallas grandes.
+* **Reseteo de Estilos (Reset CSS):** * Se eliminó el padding por defecto del navegador para tener un control total del espacio.
     * Se eliminó el `margin` del body para evitar huecos blancos en los bordes.
-* **Control de Desbordamiento:** Se implementó `overflow-x: hidden` para prevenir el scroll horizontal accidental, asegurando una navegación fluida en dispositivos móviles.
+* **Control de Desbordamiento:** Se implementó overflow-x: hidden` para prevenir el scroll horizontal accidental, asegurando una navegación fluida en dispositivos móviles.
 
+### Cambios realizados 08/02/2026:
+
+ **Layout Adaptable con CSS Grid: Se implementó un sistema de rejilla en la carta utilizando repeat(auto-fit, minmax(300px, 1fr)) para que el contenido se reorganice automáticamente según el ancho de la pantalla sin usar Media Queries.
+
+ **Identidad Visual y Gráficos: Se integró el logotipo mediante SVG nativo y se definió una paleta de colores coherente con la marca, optimizando la carga y la escalabilidad de las imágenes.
+
+ **Estructura de Captura de Datos: Se desarrolló un formulario de reservas funcional dentro de un fieldset, con etiquetas label vinculadas y validaciones de entrada (minlength, required) para asegurar la calidad de la información.
+
+ **Semántica y Mantenibilidad: Se organizó el documento con HTML5 semántico y se modularizaron los estilos en styles.css para facilitar futuras actualizaciones del código.
 ---
 
 ---
