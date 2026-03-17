@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Survey Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+
+  </head>
+
+  <body>
+
+    <fieldset>
+     <legend>Hotel Survey</legend>
+     <h1 id="title">Hotel Customer Satisfaction Survey</h1>
+     <p id="description">We appreciate your time spent to help us improve our services</p>
+   </fieldset>
+   <fieldset>
+     <legend>Survey Form</legend> 
+     <form id="survey-form">
+     <label for="name" id="name-label">Name</label>
+     <input type="text"
+       required id="name"
+       placeholder="Insert your name here">
+     <label for="email" required id="email-label">Email</label>
+     <input type="email"
+            required
+            id="email" 
+            placeholder="example@example.es">
+     <br>
+     <br>
+     <label for="number"
+            id="number-label">Age
+     </label>
+     <input type="number"
+            id="number"
+            placeholder="Age"
+            min="3"
+            max="100">
+
+     <label for="dropdown">Booking channel: </label>
+     <select id="dropdown">
+     <option value="booking">Booking.com</option>
+     <option value="expedia">Expedia </option>
+     <option value="google">Google</option>
+     <option value="rr-ss">Social Network </option>
+     </select>
+     <fieldset>
+      <legend>Overall satisfaction</legend>
+       <p>Room type stayed</p><br>
+       <label for="room-single">Single room</label>
+       <input type="radio"id="room-single" name="room-type"value="room-single">
+       <label for="room-double">Double room</label>
+       <input type="radio"id="room-double "name="room-type"value="room-double">
+       <label for="fam-suite">Familiar suite</label>
+       <input type="radio"id="fam-suite"name="room-type"value="fam-suite">
+
+      </fieldset>
+      <fieldset >
+       <legend>Hotel services used</legend>
+       <label for="amenities">Swimming pool</label>
+       <input type="checkbox"id="amenities"value="pool">
+       <label for="amenities">Café bar</label>
+       <input type="checkbox"id="amenities"value="Cafe">
+       <label for="amenities">Roof top</label>
+       <input type ="checkbox"id="amenities"value="roof">
+   
+     </fieldset>  
+     <fieldset >
+      <legend>Addional comments</legend>
+      <textarea id="comment-here"value="comment-here"
+      placeholder="Write your comments here"cols="60"rows="20"></textarea>
+     </fieldset>
+     <button id="submit"type="submit">Submit</button>
+     <button id="reset"type="reset">Reset</button>
+</body>
+</html>

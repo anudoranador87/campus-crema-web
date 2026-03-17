@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev Log 365 — Jose Aparicio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav" aria-label="Navegación principal">
+  <a href="index.html" class="nav-brand">jose<em>.</em>dev</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">Skills</a></li>
+    <li><a href="index.html#projects" data-i18n="nav-projects">Proyectos</a></li>
+    <li><a href="index.html#doors">EquiShift</a></li>
+    <li><a href="index.html#education" data-i18n="nav-education">Formación</a></li>
+    <li><a href="diario-365.html" class="here" aria-current="page">Dev Log 365</a></li>
+    <li><a href="https://github.com/anudoranador87" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    <li><a href="index.html#contact" class="nav-cta" data-i18n="nav-contact">Contacto</a></li>
+  </ul>
+  <button type="button" class="lang-btn" id="langToggle" aria-label="Switch to English">EN</button>
+</nav>
+
+<header class="masthead">
+  <p class="mast-top">
+    <span data-i18n="mast-loc">MÁLAGA, ESPAÑA — 2026</span>
+    <span>VOL. I · No. 17 / 365</span>
+    <span>anudoranador87.github.io</span>
+  </p>
+
+  <h1 class="mast-title">
+    Dev Log 365
+    <span class="sub">The Engineering Journal of Jose Aparicio</span>
+  </h1>
+
+  <p class="mast-tagline" data-i18n="mast-tagline">
+    "La lógica es mi superpoder · La sintaxis es solo la herramienta"
+    | 17 días · Errores reales · Sin filtros
+  </p>
+</header>
+
+<section class="stats-row" aria-label="Estadísticas de aprendizaje">
+  <article class="stat-item">
+    <span class="stat-n" id="c-days">0</span>
+    <span class="stat-l" data-i18n="stat-days">Días activos</span>
+  </article>
+  <article class="stat-item">
+    <span class="stat-n" id="c-bugs">0</span>
+    <span class="stat-l" data-i18n="stat-bugs">Bugs documentados</span>
+  </article>
+  <article class="stat-item">
+    <span class="stat-n" id="c-proj">0</span>
+    <span class="stat-l" data-i18n="stat-proj">Proyectos reales</span>
+  </article>
+  <article class="stat-item">
+    <span class="stat-n" id="c-streak">0</span>
+    <span class="stat-l" data-i18n="stat-streak">Racha de días</span>
+  </article>
+</section>
+
+<nav class="filter-nav" aria-label="Filtrar entradas por categoría">
+  <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true" data-i18n="filter-all">Todas</button>
+  <button type="button" class="filter-btn" data-filter="js" aria-pressed="false">JavaScript</button>
+  <button type="button" class="filter-btn" data-filter="css" aria-pressed="false">CSS</button>
+  <button type="button" class="filter-btn" data-filter="debug" aria-pressed="false">Debug</button>
+  <button type="button" class="filter-btn" data-filter="project" aria-pressed="false" data-i18n="filter-project">Proyecto</button>
+  <button type="button" class="filter-btn" data-filter="algo" aria-pressed="false" data-i18n="filter-algo">Algoritmos</button>
+</nav>
+
+<main class="entries" id="entries" aria-label="Entradas del diario">
+
+<p class="no-results" id="no-results" role="status" aria-live="polite" data-i18n="no-results">
+  No hay entradas para este filtro
+</p>
+
+<section class="intro-block" aria-labelledby="intro-title">
+  <p class="intro-kicker" data-i18n="intro-kicker">Sobre este diario</p>
+
+  <h2 class="intro-headline" id="intro-title" data-i18n="intro-title">
+    365 días de aprendizaje.<br>Documentados cuando estudio. Sin relleno.
+  </h2>
+
+  <p class="intro-body" data-i18n="intro-body1">
+    Este diario arranca el 20 de febrero de 2026 — el primer día que me siento a estudiar y lo documento.
+    El viaje dura 365 días desde esa fecha. No hay una entrada por cada día del calendario:
+    hay una entrada por cada día que estudio, aprendo o construyo algo real.
+    Los días que no hay entrada es porque no hubo sesión. Sin excusas, sin relleno.
+  </p>
+
+  <p class="intro-body" data-i18n="intro-body2">
+    Cada entrada documenta errores reales, decisiones de arquitectura y el proceso de convertir
+    teoría en código que funciona — o que no funciona, y por qué. La base técnica viene de dos fuentes:
+  </p>
+
+  <ul class="intro-sources" aria-label="Fuentes de aprendizaje">
+    <li class="intro-source">
+      <span class="source-dot" style="background:#0056d2"></span>
+      <p class="source-info">
+        <strong class="source-name">Meta Front-End Developer</strong>
+        <small class="source-sub" data-i18n="intro-src-meta">Coursera · Professional Certificate · En progreso</small>
+      </p>
+    </li>
+
+    <li class="intro-source">
+      <span class="source-dot" style="background:#006400"></span>
+      <p class="source-info">
+        <strong class="source-name">freeCodeCamp</strong>
+        <small class="source-sub" data-i18n="intro-src-fcc">Responsive Web Design · JavaScript Algorithms · En progreso</small>
+      </p>
+    </li>
+  </ul>
+
+  <p class="intro-note" data-i18n="intro-note">
+    Día 1 = 20 de febrero de 2026 · Los 365 días se cuentan desde ahí · No todos los días tienen entrada
+  </p>
+</section>
+
+<!-- ============================
+     DÍA 17 — COMPLETO
+=============================== -->
+
+<article class="entry" data-tags="js debug" aria-labelledby="title-d17">
+  <header class="entry-kicker">
+    <span class="day-badge">Día 17</span>
+    <time datetime="2026-03-08" data-i18n="d17-date">8 de Marzo, 2026</time>
+    <ul class="entry-tags">
+      <li class="etag">JS</li>
+      <li class="etag">Arrow Fn</li>
+      <li class="etag">Debug</li>
+    </ul>
+  </header>
+
+  <h2 class="entry-headline" id="title-d17" data-i18n="d17-headline">
+    Arrow Functions, cinco intentos fallidos<br>y un "clic" que cambia cómo pienso el código.
+  </h2>
+
+  <p class="entry-deck" data-i18n="d17-deck">
+    Sabía escribir Function Declarations porque era lo único que conocía. Hoy me enfrenté a reescribir código real con Arrow Functions — sin red de seguridad. El proceso fue incómodo, lento, y exactamente lo que necesitaba.
+  </p>
+
+  <div class="cols">
+    <div>
+      <h3 class="col-label" data-i18n="d17-lbl-star">Resumen STAR</h3>
+
+      <p class="body-text">
+        <strong>S —</strong> Varios días con Jonas Schmedtmann trabajando tipos de funciones. Solo conocía Function Declarations.<br><br>
+        <strong>T —</strong> Refactorizar <code style="background:var(--paper-d);padding:1px 5px;font-family:var(--mono);font-size:11px;">formatearPrecio</code> del Día 7 en una Arrow Function con parámetro por defecto.<br><br>
+        <strong>A —</strong> Sesión del Cuaderno de Pitágoras — pistas graduales, sin soluciones directas. Construí la función en capas: estructura básica → segundo parámetro → orden del template literal → concepto de default.<br><br>
+        <strong>R —</strong> Función construida desde cero, con comprensión real de cada parte.
+      </p>
+
+      <h3 class="col-label" style="margin-top:20px" data-i18n="d17-lbl-zones">Las Tres Zonas de una Arrow Function</h3>
+
+      <p class="log-item"><span class="li-icon w">+</span><span class="li-text"><strong>ZONA 1 — Parámetros</strong> (antes de ⇒): qué datos va a recibir.</span></p>
+      <p class="log-item"><span class="li-icon w">+</span><span class="li-text"><strong>ZONA 2 — La flecha =&gt;</strong>: conecta entrada con salida.</span></p>
+      <p class="log-item"><span class="li-icon w">+</span><span class="li-text"><strong>ZONA 3 — El cuerpo</strong>: usa los datos y devuelve algo.</span></p>
+      <p class="log-item"><span class="li-icon w">+</span><span class="li-text">Parámetros por defecto: con <code>= valor</code>, JS lo usa si no se pasa nada.</span></p>
+      <p class="log-item"><span class="li-icon w">+</span><span class="li-text">La elección entre Declaration y Arrow debe ser consciente, no por inercia.</span></p>
+
+      <blockquote class="pullquote">"Un parámetro no es un valor. Es un asiento reservado para cualquier valor que llegue."</blockquote>
+
+      <h3 class="col-label" style="margin-top:16px" data-i18n="d17-lbl-levels">Niveles al cierre del día</h3>
+
+      <div class="skill-row"><span class="skill-name">Arrow Fn</span><div class="skill-bar-bg" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-width="40"></div></div><span class="skill-pct">40%</span></div>
+
+      <div class="skill-row"><span class="skill-name">Defaults</span><div class="skill-bar-bg" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-width="30"></div></div><span class="skill-pct">30%</span></div>
+
+      <div class="skill-row"><span class="skill-name">Literals</span><div class="skill-bar-bg" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-width="70"></div></div><span class="skill-pct">70%</span></div>
+    </div>
+
+    <div class="col-rule">
+      <h3 class="col-label" data-i18n="d17-lbl-debug">Debug Log — Los 5 Intentos</h3>
+
+      <p class="log-item"><span class="li-icon b">✗</span><span class="li-text"><strong>Intento 1:</strong> Confundí nombre de función con parámetro. Dos puntos en lugar de flecha.<br><code>const maquinaFormato = formatearPrevio => 5:</code></span></p>
+
+      <p class="log-item"><span class="li-icon f">→</span><span class="li-text">El parámetro es un nombre temporal, no un valor fijo.</span></p>
+
+      <p class="log-item"><span class="li-icon b">✗</span><span class="li-text"><strong>Intento 2:</strong> <code>const formatearPrecio = 5 =></code> — el 5 es un pasajero concreto, no un asiento.</span></p>
+
+      <p class="log-item"><span class="li-icon b">✗</span><span class="li-text"><strong>Intento 3:</strong> Backtick de cierre faltaba. El código moría en silencio.</span></p>
+
+      <p class="log-item"><span class="li-icon f">→</span><span class="li-text">Todo lo que abre necesita cerrarse. Sin excepción.</span></p>
+
+      <p class="log-item"><span class="li-icon b">✗</span><span class="li-text"><strong>Intento 4:</strong> Orden invertido — <code>${cantidad}${moneda}</code> devuelve "5€" en lugar de "€5".</span></p>
+
+      <p class="log-item"><span class="li-icon b">✗</span><span class="li-text"><strong>Intento 5:</strong> El "bb" al final del template literal. Señal de saturación. Pausa estratégica.</span></p>
+
+      <p class="log-item"><span class="li-icon w">✓</span><span class="li-text">Resultado: función construida desde cero con comprensión real de cada parte.</span></p>
+
+      <h3 class="col-label" style="margin-top:20px" data-i18n="d17-lbl-final">Función Final</h3>
+
+      <pre class="code-block"><code>
+// Arrow Function + parámetro por defecto
+const formatearPrecio =
+  (moneda = "€", cantidad) =>
+    `${moneda}${cantidad}`;
+
+formatearPrecio(5);        // → "€5"
+formatearPrecio("£", 5);   // → "£5"
+
+// Desafío Día 68 — sin pistas
+// Añadir unidades → precio total
+// (moneda = "€", cantidad, unidades) => ???
+      </code></pre>
+
+      <blockquote class="pullquote" style="font-size:0.9rem;">"Antes usaba Declarations porque era lo único que conocía. Ahora elijo conscientemente."</blockquote>
+    </div>
+  </div>
+</article>
+
+<!-- ============================
+     DÍA 10 —
+=============================== -->
+
+<article class="entry" data-tags="css js" aria-labelledby="title-d10">
+  <header class="entry-kicker">
+    <span class="day-badge">Día 10</span>
+    <time datetime="2026-03-01" data-i18n="d10-date">1 de Marzo, 2026</time>
+    <ul class="entry-tags" aria-label="Categorías">
+      <li class="etag" data-i18n="d10-tag-ref">Reflexión</li>
+      <li class="etag" data-i18n="d10-tag-mile">Milestone</li>
+    </ul>
+  </header>
+
+  <h2 class="entry-headline" id="title-d10" data-i18n="d10-headline">
+    Saturación positiva:<br>el cerebro también necesita compilar.
+  </h2>
+
+  <p class="entry-deck" data-i18n="d10-deck">
+    Después de semanas de bombardeo constante entre freeCodeCamp y Coursera, llegó el "clic" definitivo — y con él, la decisión más inteligente: parar. No es abandonar. Es dejar que el cerebro haga su trabajo.
+  </p>
+
+  <div class="cols">
+    <div>
+      <h3 class="col-label" data-i18n="d10-lbl1">La victoria antes de parar</h3>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d10-win1">
+          El "clic" definitivo: extraer datos de objetos sin adivinar la sintaxis
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d10-win2">
+          60 días consecutivos: HTML, CSS, JS, proyectos reales, EquiShift
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d10-win3">
+          Control absoluto de la sintaxis — de la duda al dominio en 8 semanas
+        </span>
+      </p>
+
+      <blockquote class="pullquote" data-i18n="d10-quote">
+        "Aprender también es saber cuándo parar. Me voy después de una victoria, no huyendo de un bloqueo."
+      </blockquote>
+    </div>
+
+    <div class="col-rule">
+      <h3 class="col-label" data-i18n="d10-lbl2">La decisión</h3>
+
+      <p class="body-text" data-i18n="d10-body">
+        La saturación no es bloqueo — es el síntoma de haber absorbido demasiado bien.
+        Cuando vuelva, muchas cosas que hoy han costado esfuerzo saldrán de forma natural.
+        <strong>El cerebro también necesita tiempo para compilar.</strong>
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================
+     DÍA 9 —
+=============================== -->
+
+<article class="entry" data-tags="js algo project" aria-labelledby="title-d9">
+  <header class="entry-kicker">
+    <span class="day-badge">Día 9</span>
+    <time datetime="2026-02-28" data-i18n="d9-date">28 de Febrero, 2026</time>
+    <ul class="entry-tags" aria-label="Categorías">
+      <li class="etag">JS</li>
+      <li class="etag">Algoritmos</li>
+      <li class="etag">Proyecto</li>
+    </ul>
+  </header>
+
+  <h2 class="entry-headline" id="title-d9" data-i18n="d9-headline">
+    EquiShift Málaga: El día que empecé<br>a codificar justicia laboral.
+  </h2>
+
+  <p class="entry-deck" data-i18n="d9-deck">
+    La gestión manual de turnos lleva años generando inequidad en mi entorno laboral.
+    Hoy diseñé el núcleo lógico del algoritmo que va a cambiarlo — con objetos,
+    arrays anidados y aritmética modular.
+  </p>
+
+  <div class="cols">
+    <div>
+      <h3 class="col-label" data-i18n="d9-lbl1">El problema real</h3>
+
+      <p class="body-text" style="margin-bottom:16px;" data-i18n="d9-body">
+        Con plantillas que mezclan contratos de 37.5h y 40h, garantizar que todos libren
+        los mismos fines de semana al año es matemáticamente imposible a mano.
+        <strong>Este no es un proyecto de tutorial.</strong>
+        Resuelve un problema operativo real.
+      </p>
+
+      <blockquote class="pullquote" data-i18n="d9-quote1">
+        "No busco una tabla de Excel. Busco un sistema donde el horario sea, por primera vez, igualitario para todos."
+      </blockquote>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d9-win1">
+          Modelo de datos: objeto trabajador con metadatos de contrato y bolsas de días
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d9-win2">
+          Dataset: 14 festivos Málaga 2026 — nacional, autonómico y local integrados
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d9-win3">
+          calendario: [] como "percha" — la estructura existe antes que el motor
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d9-win4">
+          Formato YYYY-MM-DD para evitar errores de zona horaria en fase inicial
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d9-bug1">
+          Anidación de objetos en arrays — una coma fuera de sitio mata todo el script
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon f">→</span>
+        <span class="li-text" data-i18n="d9-fix1">
+          La arquitectura de datos exige precisión quirúrgica desde la Fase 1
+        </span>
+      </p>
+    </div>
+
+    <div class="col-rule">
+      <h3 class="col-label" data-i18n="d9-lbl2">Estructura del modelo de datos</h3>
+
+      <pre class="code-block"><code>
+// Cada empleado — escalable y justo
+{
+  id: 1,
+  nombre: "Jose María",
+  contrato: 37.50,
+  festivosDisponibles: 13,
+  vacacionesDisponibles: 28,
+  calendario: [] // Target del bucle maestro
+}
+      </code></pre>
+
+      <h3 class="col-label" style="margin-top:20px;" data-i18n="d9-lbl3">
+        Algoritmo de rotación modular
+      </h3>
+
+      <pre class="code-block"><code>
+function calcularTurno(dia, idx) {
+  return turnos[
+    (dia + idx) % turnos.length
+  ];
+}
+// % garantiza rotación perfecta
+// sin importar plantilla o días
+      </code></pre>
+
+      <blockquote class="pullquote" style="font-size:0.9rem;" data-i18n="d9-quote2">
+        "Pensar la arquitectura antes de escribir código no es perder tiempo.
+        Es construir sobre roca, no sobre arena."
+      </blockquote>
+    </div>
+  </div>
+</article>
+<!-- ============================
+     DÍA 8 — 
+=============================== -->
+
+<article class="entry" data-tags="js css project" aria-labelledby="title-d8">
+  <header class="entry-kicker">
+    <span class="day-badge">Día 8</span>
+    <time datetime="2026-02-27" data-i18n="d8-date">27 de Febrero, 2026</time>
+    <ul class="entry-tags" aria-label="Categorías">
+      <li class="etag">JS</li>
+      <li class="etag">CSS</li>
+      <li class="etag">POO</li>
+    </ul>
+  </header>
+
+  <h2 class="entry-headline" id="title-d8" data-i18n="d8-headline">
+    Modo Oscuro Nativo con CSS Variables:<br>de la jungla a la arquitectura limpia.
+  </h2>
+
+  <p class="entry-deck" data-i18n="d8-deck">
+    Implementé un dark mode usando Design Tokens — y aprendí que una variable CSS bien nombrada vale más que 50 líneas de colores hardcoded.
+  </p>
+
+  <div class="cols">
+    <div>
+      <h3 class="col-label" data-i18n="d8-lbl1">Dark Mode — solución técnica</h3>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d8-win1">
+          classList.toggle('dark-mode') via Event Listener — DOM manipulation real
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d8-win2">
+          CSS Custom Properties centralizadas — cambio de tema en un solo punto
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d8-win3">
+          Arquitectura Design Tokens: escalable y mantenible desde el primer día
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d8-bug1">
+          Selva de estilos duplicados bloqueaba herencia de variables CSS
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d8-bug2">
+          Llave } mal cerrada invalidaba secciones enteras de CSS
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon f">→</span>
+        <span class="li-text" data-i18n="d8-fix1">
+          Limpiar antes de construir: el orden es la base del desarrollo profesional
+        </span>
+      </p>
+
+      <blockquote class="pullquote" data-i18n="d8-quote">
+        "Una variable CSS bien nombrada vale más que 50 líneas de colores hardcoded."
+      </blockquote>
+    </div>
+
+    <div class="col-rule">
+      <h3 class="col-label" data-i18n="d8-lbl2">Arquitectura del toggle</h3>
+
+      <pre class="code-block"><code>
+/* Design Token System */
+:root {
+  --bg:   #ffffff;
+  --text: #333333;
+}
+
+.dark-mode {
+  --bg:   #121212;
+  --text: #f0f0f0;
+}
+
+// JS — un solo toggle lo cambia todo
+btn.addEventListener('click', () =>
+  document.body.classList
+    .toggle('dark-mode')
+);
+      </code></pre>
+    </div>
+  </div>
+</article>
+
+<!-- ============================
+     DÍA 7 — 
+=============================== -->
+
+<article class="entry" data-tags="js project" aria-labelledby="title-d7">
+  <header class="entry-kicker">
+    <span class="day-badge">Día 7</span>
+    <time datetime="2026-02-26" data-i18n="d7-date">26 de Febrero, 2026</time>
+    <ul class="entry-tags" aria-label="Categorías">
+      <li class="etag">JS</li>
+      <li class="etag">Funciones</li>
+      <li class="etag">Proyecto</li>
+    </ul>
+  </header>
+
+  <h2 class="entry-headline" id="title-d7" data-i18n="d7-headline">
+    Examen de Coursera aprobado.<br>No era suficiente.
+  </h2>
+
+  <p class="entry-deck" data-i18n="d7-deck">
+    El sistema marcó aprobado. Yo construí un generador de tickets de supermercado de todas formas — porque aprobar un test es memoria, y construir algo es comprensión real.
+  </p>
+
+  <div class="cols">
+    <div>
+      <h3 class="col-label" data-i18n="d7-lbl1">La decisión</h3>
+
+      <p class="body-text" data-i18n="d7-body">
+        El examen se centraba en teoría: variables locales, encadenamiento básico.
+        Tenía el certificado pero la "pesadilla de la sintaxis" seguía ahí.
+        Decidí construir un caso real para entender cómo los datos viajan entre funciones —
+        el origen, la comunicación y la activación.
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d7-win1">
+          Parámetros como asientos reservados — no datos fijos
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d7-win2">
+          El flujo del return al argumento — comunicación entre funciones
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d7-win3">
+          Los () son el único interruptor real de una función
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d7-bug1">
+          Intentar sumar funciones con + — las funciones se invocan, no se operan
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d7-bug2">
+          Mezclar ${} con paréntesis — el Template Literal es quirúrgico
+        </span>
+      </p>
+
+      <blockquote class="pullquote" data-i18n="d7-quote">
+        "producto y precio son nombres temporales que yo elijo para que el código sea legible para otros humanos."
+      </blockquote>
+    </div>
+
+    <div class="col-rule">
+      <h3 class="col-label" data-i18n="d7-lbl2">Arquitectura modular</h3>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d7-arch1">
+          formatearPrecio() — Procesador. Número → dinero con símbolo.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d7-arch2">
+          imprimirTicket() — Interfaz. Le habla al humano.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d7-arch3">
+          realizarCompra() — Controlador. Coordina el flujo entre ambas.
+        </span>
+      </p>
+
+      <h3 class="col-label" style="margin-top:20px;" data-i18n="d7-lbl3">Código del generador</h3>
+
+      <pre class="code-block"><code>
+function formatearPrecio(cantidad) {
+  return `€${cantidad}`;
+}
+
+function imprimirTicket(prod, precio) {
+  console.log(
+    `${prod} → ${precio}`
+  );
+}
+
+function realizarCompra(art, val) {
+  let r = formatearPrecio(val);
+  imprimirTicket(art, r);
+}
+
+realizarCompra("Manzanas", 5);
+// → "Manzanas → €5"
+      </code></pre>
+    </div>
+  </div>
+</article>
+
+<!-- ============================
+     DÍA 6 — 
+=============================== -->
+
+<article class="entry" data-tags="js debug" aria-labelledby="title-d6">
+  <header class="entry-kicker">
+    <span class="day-badge">Día 6</span>
+    <time datetime="2026-02-25" data-i18n="d6-date">25 de Febrero, 2026</time>
+    <ul class="entry-tags" aria-label="Categorías">
+      <li class="etag">JS</li>
+      <li class="etag">DOM</li>
+      <li class="etag">Debug</li>
+    </ul>
+  </header>
+
+  <h2 class="entry-headline" id="title-d6" data-i18n="d6-headline">
+    Motor de Estado Circular:<br>del nivel 1 al 10, y vuelta a empezar.
+  </h2>
+
+  <p class="entry-deck" data-i18n="d6-deck">
+    Un bucle lógico que incrementa niveles y dispara un Modo Legendario visual al llegar al máximo.
+    Lo que parece simple esconde tres trampas de sintaxis que me costaron toda la tarde.
+  </p>
+
+  <div class="cols">
+    <div>
+      <h3 class="col-label" data-i18n="d6-lbl1">Logros del día</h3>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d6-win1">
+          Motor de Estado Circular: bucle lógico que incrementa del 1 al 10 y reinicia a 0 al llegar al nivel 11.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d6-win2">
+          Modo Legendario: disparador visual (escala, bordes dorados y brillo) al alcanzar el nivel máximo.
+        </span>
+      </p>
+
+      <h3 class="col-label" style="margin-top:20px;" data-i18n="d6-lbl2">
+        Gestión de errores — Meta Coursera
+      </h3>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d6-win3">
+          Los 4 jinetes: ReferenceError, TypeError, RangeError, SyntaxError — identificados y dominados.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d6-win4">
+          Bloques try...catch para aplicaciones que no mueren ante fallos inesperados.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d6-win5">
+          .name y .message para extraer información crítica del objeto Error.
+        </span>
+      </p>
+
+      <blockquote class="pullquote" data-i18n="d6-quote">
+        "Los errores lógicos son los más críticos porque la consola no te avisa. El pensamiento crítico es la única defensa."
+      </blockquote>
+    </div>
+
+    <div class="col-rule">
+      <h3 class="col-label" data-i18n="d6-lbl3">Debug Log</h3>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d6-bug1">
+          El Conflicto del Else: Al volver a 0, el efecto dorado desaparecía tan rápido que mataba la UX.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon f">→</span>
+        <span class="li-text" data-i18n="d6-fix1">
+          Reorganización del flujo if/else para priorizar la persistencia visual del hito alcanzado.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d6-bug2">
+          Paréntesis extra: {(this... código muerto al instante.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d6-bug3">
+          Punto dentro de classList: classList no lleva punto. Carácter huérfano = motor parado.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon f">→</span>
+        <span class="li-text" data-i18n="d6-fix2">
+          Los bloques de código deben estar limpios de caracteres huérfanos.
+        </span>
+      </p>
+
+      <h3 class="col-label" style="margin-top:20px;" data-i18n="d6-lbl4">Código del motor</h3>
+
+      <pre class="code-block"><code>
+// Motor circular
+if (nivel >= 10) {
+  // Mostrar Modo Legendario primero
+  activarLegendario();
+  nivel = 0; // luego resetear
+} else {
+  nivel++;
+}
+      </code></pre>
+    </div>
+  </div>
+</article>
+
+<!-- ============================
+     DÍA 5 — 
+=============================== -->
+
+<article class="entry" data-tags="js algo" aria-labelledby="title-d5">
+  <header class="entry-kicker">
+    <span class="day-badge">Día 5</span>
+    <time datetime="2026-02-24" data-i18n="d5-date">24 de Febrero, 2026</time>
+    <ul class="entry-tags" aria-label="Categorías">
+      <li class="etag">JS</li>
+      <li class="etag">Algoritmos</li>
+      <li class="etag">Arrays</li>
+    </ul>
+  </header>
+
+  <h2 class="entry-headline" id="title-d5" data-i18n="d5-headline">
+    Sesión de entrenamiento:<br>Algoritmos y Estructuras de Datos.
+  </h2>
+
+  <p class="entry-deck" data-i18n="d5-deck">
+    Una serie de ejercicios prácticos simulando entornos reales — e-commerce, sistemas de login,
+    perfiles de usuario. El combate de hoy no fue contra el problema en sí, sino contra la sintaxis.
+    Y la sintaxis ganó varias rondas.
+  </p>
+
+  <div class="cols">
+    <div>
+      <h3 class="col-label" data-i18n="d5-lbl1">Logros del día</h3>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d5-win1">
+          HTML dinámico: generado desde cero mediante funciones y Template Literals — datos que se convierten en interfaz
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d5-win2">
+          Arquitectura de información: arrays anidados dentro de objetos para gestionar perfiles de usuario complejos
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d5-win3">
+          Mapa de símbolos consolidado: llaves {} para objetos, corchetes [] para listas, paréntesis () para funciones
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d5-win4">
+          Diferencia return vs console.log: return devuelve datos; console.log solo los muestra
+        </span>
+      </p>
+
+      <h3 class="col-label" style="margin-top:20px;" data-i18n="d5-lbl2">Pelea con el código</h3>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d5-bug1">
+          Guerra de Símbolos: () vs {} vs [] — varios intentos fallidos hasta consolidar el rol de cada uno
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d5-bug2">
+          return fuera de función: intenté usarlo en el scope global — JavaScript lo rechaza sin explicación clara
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d5-bug3">
+          Mutación vs Asignación: usar = en lugar de .push() sobreescribió el array completo con un solo string
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon f">→</span>
+        <span class="li-text" data-i18n="d5-fix1">
+          = asigna y destruye lo anterior. .push() añade al final. Herramientas distintas, consecuencias opuestas.
+        </span>
+      </p>
+
+      <blockquote class="pullquote" data-i18n="d5-quote">
+        "Los arrays no son cajas que se sustituyen — son listas que crecen. .push() es el único que lo entiende."
+      </blockquote>
+    </div>
+
+    <div class="col-rule">
+      <h3 class="col-label" data-i18n="d5-lbl3">El patrón que cambió todo</h3>
+
+      <pre class="code-block"><code>
+// Perfil de usuario — array dentro de objeto
+const usuario = {
+  nombre: "Jose",
+  rol: "admin",
+  permisos: ["leer", "escribir", "borrar"]
+};
+
+// = destruye el array entero ❌
+usuario.permisos = "publicar";
+// → permisos: "publicar" (string, no array)
+
+// .push() añade al final ✅
+usuario.permisos.push("publicar");
+// → ["leer","escribir","borrar","publicar"]
+      </code></pre>
+
+      <p class="body-text" style="margin-top:16px;" data-i18n="d5-body2">
+        Este patrón — objeto con array anidado — es exactamente la base del modelo de datos de EquiShift.
+        Sin haberlo practicado hoy, la arquitectura del Día 9 habría sido imposible.
+      </p>
+    </div>
+  </div>
+</article>
+
+<!-- ============================
+     DÍA 4 — 
+=============================== -->
+
+<article class="entry" data-tags="js css debug" aria-labelledby="title-d4">
+  <header class="entry-kicker">
+    <span class="day-badge">Día 4</span>
+    <time datetime="2026-02-23" data-i18n="d4-date">23 de Febrero, 2026</time>
+    <ul class="entry-tags" aria-label="Categorías">
+      <li class="etag">JS</li>
+      <li class="etag">CSS</li>
+      <li class="etag">Responsive</li>
+      <li class="etag">Debug</li>
+    </ul>
+  </header>
+
+  <h2 class="entry-headline" id="title-d4" data-i18n="d4-headline">
+    Hoy dejé de hacer una web "que funciona"<br>para hacer una web profesional.
+  </h2>
+
+  <p class="entry-deck" data-i18n="d4-deck">
+    Un día de intensidad brutal. Salté del diseño visual a la lógica pura, enfrentándome a los problemas que separan a los aficionados de los desarrolladores reales.
+  </p>
+
+  <div class="cols">
+    <div>
+      <h3 class="col-label" data-i18n="d4-lbl1">Batalla por el Responsive Design</h3>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d4-win1">
+          Refactorización del contenedor principal: Grid en escritorio → Flexbox columna en móvil
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d4-win2">
+          :user-invalid: el feedback rojo solo aparece después de que el usuario interactúa. Detalle de "pro".
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d4-win3">
+          Micro-interacciones: input:focus con transition y transform — los campos "reaccionan"
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d4-bug1">
+          La Cascada de CSS: estilos globales se daban de bofetadas con los de las Media Queries
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon f">→</span>
+        <span class="li-text" data-i18n="d4-fix1">
+          Priorizar y organizar selectores — la cascada es una feature, no un bug, si la controlas
+        </span>
+      </p>
+
+      <blockquote class="pullquote" data-i18n="d4-quote">
+        "De nada sirve un JS perfecto si la web se ve mal en un iPhone. El diseño y la lógica son un solo cuerpo."
+      </blockquote>
+    </div>
+
+    <div class="col-rule">
+      <h3 class="col-label" data-i18n="d4-lbl2">JavaScript y la Lógica de Reservas</h3>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d4-win4">
+          Decisión inteligente: tiré el código y empecé de cero. Derribar el edificio para construir cimientos sólidos.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d4-bug2">
+          = vs ===: usar === en un bucle es como hacer una pregunta sin anotar la respuesta.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d4-bug3">
+          Punto y coma tras for: bloqueó todo el motor. Un carácter invisible, consecuencias totales.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d4-bug4">
+          El caos de paréntesis y llaves: el if que se quedaba cojo por no tener su "cajita".
+        </span>
+      </p>
+
+      <h3 class="col-label" style="margin-top:20px;" data-i18n="d4-lbl3">Código del día</h3>
+
+      <pre class="code-block"><code>
+/* Ejemplo simplificado del patrón corregido */
+if (reservaActiva === true) {
+  procesarReserva();
+} else {
+  mostrarError();
+}
+      </code></pre>
+    </div>
+  </div>
+</article>
+
+<!-- ============================
+     DÍA 3 — 
+=============================== -->
+
+<article class="entry" data-tags="css project" aria-labelledby="title-d3">
+  <header class="entry-kicker">
+    <span class="day-badge">Día 3</span>
+    <time datetime="2026-02-22" data-i18n="d3-date">22 de Febrero, 2026</time>
+    <ul class="entry-tags" aria-label="Categorías">
+      <li class="etag">CSS</li>
+      <li class="etag">Grid</li>
+      <li class="etag">Proyecto</li>
+    </ul>
+  </header>
+
+  <h2 class="entry-headline" id="title-d3" data-i18n="d3-headline">
+    Forjando el Formulario de Odin Project:<br>
+    Grid, tipografía de élite y sombras con intención.
+  </h2>
+
+  <p class="entry-deck" data-i18n="d3-deck">
+    Hoy he terminado el proyecto del formulario de registro. No solo he picado código —
+    he tomado decisiones de diseño conscientes y he usado herramientas profesionales por primera vez.
+    El cambio de nivel se nota.
+  </p>
+
+  <div class="cols">
+    <div>
+      <h3 class="col-label" data-i18n="d3-lbl1">Conceptos dominados</h3>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d3-win1">
+          Grid real: división en columnas (2fr 3fr) y grid-template-columns: 1fr 1fr —
+          los inputs alineados en parejas perfectas sin moverse según el texto.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d3-win2">
+          Jerarquía tipográfica: Norse para el branding y el botón de acción;
+          Inter para textos largos y labels. Dos fuentes, dos roles, cero conflicto.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d3-win3">
+          Sombras con intención: pasé de sombras genéricas a una Bottom Shadow direccional —
+          el formulario flota, no está sucio.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d3-win4">
+          Micro-interacción: :hover no solo cambia color — eleva el botón con translateY(-3px).
+          Se siente "vivo".
+        </span>
+      </p>
+
+      <h3 class="col-label" style="margin-top:20px;" data-i18n="d3-lbl2">Debug Log</h3>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d3-bug1">
+          Las sombras genéricas iniciales hacían el formulario parecer "sucio" —
+          las apliqué sin dirección ni intención.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d3-bug2">
+          Grid se desalineaba al cambiar el texto de los labels —
+          no había definido un ancho fijo para la columna de inputs.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon b">✗</span>
+        <span class="li-text" data-i18n="d3-bug3">
+          Las dos fuentes chocaban visualmente —
+          usé Norse para todo antes de entender la jerarquía tipográfica.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon f">→</span>
+        <span class="li-text" data-i18n="d3-fix1">
+          El diseño no es decoración — es comunicación. Cada decisión visual tiene que tener una razón.
+        </span>
+      </p>
+
+      <blockquote class="pullquote" data-i18n="d3-quote">
+        "El diseño está en los detalles invisibles. Un letter-spacing de 0.5px lo cambia todo."
+      </blockquote>
+    </div>
+
+    <div class="col-rule">
+      <h3 class="col-label" data-i18n="d3-lbl3">Código de las decisiones</h3>
+
+      <pre class="code-block"><code>
+/* Sombra con dirección — eje Y únicamente */
+box-shadow: 0 8px 15px
+  rgba(0,0,0,0.1);
+
+/* Micro-interacción que se siente viva */
+.btn:hover {
+  transform: translateY(-3px);
+  transition: 0.3s ease;
+}
+
+/* Grid de inputs alineado */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+      </code></pre>
+    </div>
+  </div>
+</article>
+
+<!-- ============================
+     DÍA 1 — 
+=============================== -->
+
+<article class="entry" data-tags="css js" aria-labelledby="title-d1">
+  <header class="entry-kicker">
+    <span class="day-badge">Día 1</span>
+    <time datetime="2026-02-20" data-i18n="d1-date">20 de Febrero, 2026</time>
+    <ul class="entry-tags" aria-label="Categorías">
+      <li class="etag">JS</li>
+      <li class="etag">CSS</li>
+      <li class="etag">Fundamentos</li>
+    </ul>
+  </header>
+
+  <h2 class="entry-headline" id="title-d1" data-i18n="d1-headline">
+    El día que empezó todo:<br>la primera línea de código consciente.
+  </h2>
+
+  <p class="entry-deck" data-i18n="d1-deck">
+    No fue bonito. No fue rápido. No fue elegante.  
+    Pero fue real.  
+    Hoy empezó el viaje de 365 días — sin atajos, sin plantillas, sin copiar-pegar.
+  </p>
+
+  <div class="cols">
+    <div>
+      <h3 class="col-label" data-i18n="d1-lbl1">Lo que aprendí hoy</h3>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d1-win1">
+          HTML no es “poner cajas” — es estructura semántica. Cada etiqueta tiene un propósito.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d1-win2">
+          CSS no es decoración — es arquitectura visual. Orden, jerarquía y consistencia.
+        </span>
+      </p>
+
+      <p class="log-item">
+        <span class="li-icon w">+</span>
+        <span class="li-text" data-i18n="d1-win3">
+          La web responde a reglas, no a deseos. Si algo falla, es por mí, no por ella.
+        </span>
+      </p>
+
+      <blockquote class="pullquote" data-i18n="d1-quote">
+        "No sabía nada. Pero sabía que no quería seguir sin saber."
+      </blockquote>
+    </div>
+
+    <div class="col-rule">
+      <h3 class="col-label" data-i18n="d1-lbl2">Mi primer bloque de código</h3>
+
+      <pre class="code-block"><code>
+&lt;!-- El primer bloque real que escribí --&gt;
+&lt;h1&gt;Hola Mundo&lt;/h1&gt;
+&lt;p&gt;Esta es mi primera página web.&lt;/p&gt;
+      </code></pre>
+
+      <p class="body-text" data-i18n="d1-body2" style="margin-top:16px;">
+        No era gran cosa. Pero era mío.  
+        Y lo más importante: entendí cada línea.  
+        Ese fue el verdadero inicio.
+      </p>
+    </div>
+  </div>
+</article>
+
+</main>
+
+<!-- ============================
+     FOOTER
+=============================== -->
+
+<footer class="footer">
+  <p class="footer-text">
+    © 2026 Jose Aparicio — Dev Log 365  
+    <span data-i18n="footer-rights">Todos los derechos reservados.</span>
+  </p>
+
+  <ul class="footer-links">
+    <li><a href="index.html#about">Skills</a></li>
+    <li><a href="index.html#projects">Proyectos</a></li>
+    <li><a href="index.html#doors">EquiShift</a></li>
+    <li><a href="index.html#education">Formación</a></li>
+    <li><a href="index.html#contact">Contacto</a></li>
+  </ul>
+
+  <p class="footer-copy">
+    <i class="fa-solid fa-code"></i>  
+    <span data-i18n="footer-built">Construido a mano, línea a línea.</span>
+  </p>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>

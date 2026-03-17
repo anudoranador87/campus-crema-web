@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f9f9f9;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mes {
+  margin-bottom: 30px;
+}
+
+.mes h2 {
+  text-align: center;
+  background: #eee;
+  padding: 5px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 5px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+  font-size: 12px;
+}
+
+th {
+  background: #ddd;
+}
+
+.festivo {
+  background-color: #ffdede;
+}
+
+.libre {
+  background-color: #dedefd;
+}
+
+.noche {
+  background-color: #dedefd;
+}
+
+.resumen {
+  margin-top: 20px;
+}

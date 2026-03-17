@@ -1,0 +1,202 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f6; 
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+#survey-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+#description {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: column; 
+    margin-bottom: 1.2rem;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+}
+
+input[type="radio"]{
+    
+    cursor: pointer;
+    accent-color: #28a745; 
+    width: 20px;
+    height: 20px;
+   transition: all 0.3s ease;  
+   
+   
+    
+
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.option-row {
+    display: flex;
+    align-items: center; 
+     margin-bottom: 8px;
+     padding: 1px;
+     width: 100%    ;
+}
+
+
+
+.option-row label {
+    font-weight: normal;
+}
+[type='radio'] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  appearance: none;
+  border: 2px solid #3b9320;
+  border-radius: 4px;
+  background-color: white;
+  transition: all 0.3s;
+  vertical-align: middle;
+  margin-right: 15px;
+  border-radius: 10px;
+}
+
+
+input[type='radio']:checked {
+  background-color: #28a745;
+  border-color: #28a745;
+  border-radius: 10px;
+  box-shadow: 0 0 0 2px rgba(210, 168, 30, 0.5);
+}
+input[type="radio"]:checked::after{
+  content: "★";
+  display: block;
+  text-align: center;
+  background-color: #28a745;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  line-height: 15px;
+  
+
+}
+
+input[type='checkbox'],input[type='radio']
+
+
+input[type='checkbox'],
+:checked {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  appearance: none;
+  border: 2px solid #3b9320;
+  border-radius: 4px;
+  background-color:     white;
+  transition: all 0.3s;
+  vertical-align: middle;
+  margin-right: 15px;
+  
+}
+input[type='checkbox'],
+:checked {
+  background-color: #28a745;
+  border-color: #28a745;
+  box-shadow: 0 0 0 2px rgba(210, 168, 30, 0.5); 
+}
+
+input[type="checkbox"]:checked::after{
+  content: "✓";
+  display: block;
+  text-align: center;
+  background-color: #28a745;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  line-height: 15px;
+}
+
+fieldset {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 10px;
+    color: #28a745;
+}
+
+
+.button-group {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#submit {
+    background-color: #28a745;
+    color: white;
+}
+
+#submit:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+
+#reset {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+#reset:hover {
+    background-color: #dee2e6;
+}

@@ -1,0 +1,106 @@
+/* Reseteo básico y tipografía */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f4f9;
+  padding: 40px 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+
+.pricing-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch; /* Asegura que todas midan lo mismo de alto */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Estilo base de las tarjetas */
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: #666 0px 4px 6px;
+  transition: transform 0.3s ease, box-shadow 0.6s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.pricing-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+
+h2 {
+  color: #f83232;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  display: block;
+ 
+}
+
+p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+
+ul {
+  margin-top: auto; 
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+li::before {
+  content: "✓";
+  color: #28a745;
+  font-weight: bold;
+  margin-right: 10px;
+  flex-shrink: 0; 
+}
+
+
+
+.basic-plan {
+  order: 0;
+  flex: 0 1 300px;
+}
+
+.pro-plan {
+  order: 1;
+  flex: 2 1 350px; /* Crece más que el resto */
+  border: 2px solid #f83232; /* Destaca el plan Pro */
+
+
+  }

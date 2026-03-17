@@ -1,0 +1,794 @@
+/* =========================================
+   VARIABLES GLOBALES
+========================================= */
+
+:root {
+  --paper: #faf7f2;
+  --paper-d: #e8e3dc;
+  --ink: #1a1a1a;
+  --ink-soft: #444;
+  --accent: #0056d2;
+  --accent-soft: #dce8ff;
+  --mono: "Space Mono", monospace;
+  --serif: "Libre Baskerville", serif;
+  --display: "Playfair Display", serif;
+  --sans: "DM Sans", sans-serif;
+
+  --radius: 6px;
+  --shadow-soft: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-hard: 0 8px 20px rgba(0,0,0,0.12);
+
+  --speed: 0.25s;
+}
+
+/* =========================================
+   RESET BÁSICO DEL CSS
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+  padding-top: 80px; /* espacio para la navbar fija */
+}
+
+/* =========================================
+   TIPOGRAFÍA GLOBAL
+========================================= */
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p, li {
+  font-family: var(--sans);
+  font-size: 1rem;
+}
+
+code {
+  font-family: var(--mono);
+  background: var(--paper-d);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/* =========================================
+   LAYOUT BASE
+========================================= */
+
+.entries {
+  width: min(900px, 90%);
+  margin: 0 auto;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 20px;
+}
+
+.col-rule {
+  border-left: 2px solid var(--paper-d);
+  padding-left: 24px;
+}
+
+/* =========================================
+   NAVBAR FIJA
+========================================= */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--paper);
+  border-bottom: 1px solid var(--paper-d);
+  padding: 14px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100; /* por encima del filter-nav sticky (z-index: 40) y cualquier contenido */
+}
+
+.nav-brand {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-brand em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 22px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-weight: 500;
+  transition: color var(--speed);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-links .here {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.nav-cta {
+  padding: 6px 14px;
+  background: var(--accent);
+  color: white !important;
+  border-radius: var(--radius);
+  transition: background var(--speed);
+}
+
+.nav-cta:hover {
+  background: #003c96;
+}
+
+.lang-btn {
+  border: 1px solid var(--paper-d);
+  background: white;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background var(--speed);
+}
+
+.lang-btn:hover {
+  background: var(--paper-d);
+}
+
+/* =========================================
+   MASTHEAD — estilo periódico
+========================================= */
+
+.masthead {
+  text-align: center;
+  padding: 60px 0 40px;
+  border-bottom: 1px solid var(--paper-d);
+}
+
+.mast-top {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+
+.mast-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+.mast-title .sub {
+  display: block;
+  font-size: 1rem;
+  font-family: var(--serif);
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+
+.mast-tagline {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin-top: 10px;
+}
+
+/* =========================================
+   STATS — contadores animados( progress)
+========================================= */
+
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--paper-d);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-n {
+  font-size: 2.4rem;
+  font-family: var(--display);
+  font-weight: 900;
+  color: var(--accent);
+  display: block;
+}
+
+.stat-l {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* =========================================
+   FILTROS POR CATEGORÍA
+========================================= */
+
+.filter-nav {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--paper-d);
+  /* Sticky: se queda visible al scrollear, justo debajo de la navbar fija */
+  position: sticky;
+  top: 57px;           /* altura exacta de .nav (padding 14px*2 + línea) */
+  background: var(--paper);
+  z-index: 40;         /* por debajo de .nav (z-index: 100) pero sobre el contenido */
+}
+
+.filter-btn {
+  padding: 6px 14px;
+  border: 1px solid var(--paper-d);
+  background: white;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all var(--speed);
+}
+
+.filter-btn:hover {
+  background: var(--paper-d);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* =========================================
+   ENTRADAS DEL DIARIO — ESTRUCTURA GENERAL
+========================================= */
+
+.entry {
+  padding: 50px 0;
+  border-bottom: 1px solid var(--paper-d);
+}
+
+.entry:last-of-type {
+  border-bottom: none;
+}
+
+.entry-kicker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* Badge del día */
+.day-badge {
+  background: var(--accent);
+  color: white;
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+/* Etiquetas de categoría */
+.entry-tags {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+}
+
+.entry-tags .etag {
+  background: var(--paper-d);
+  padding: 3px 8px;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-family: var(--mono);
+  color: var(--ink-soft);
+}
+
+/* Título principal de cada entrada */
+.entry-headline {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+/* Subtítulo / Deck */
+.entry-deck {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+}
+
+/* =========================================
+   LISTAS DE LOGS, ICONOS Y TEXTO
+========================================= */
+
+.log-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.li-icon {
+  font-family: var(--mono);
+  font-weight: bold;
+  font-size: 1rem;
+  width: 18px;
+  text-align: center;
+}
+
+/* Colores de iconos */
+.li-icon.w { color: #006400; }   /* win */
+.li-icon.b { color: #b30000; }   /* bug */
+.li-icon.f { color: #444; }      /* fix */
+
+/* Texto del log */
+.li-text {
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+/* =========================================
+   PULLQUOTES — citas destacadas
+========================================= */
+
+.pullquote {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  border-left: 4px solid var(--accent);
+  padding-left: 16px;
+  margin: 20px 0;
+}
+
+/* =========================================
+   BARRAS DE NIVEL (Día 17)
+========================================= */
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.skill-name {
+  width: 90px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.skill-bar-bg {
+  flex: 1;
+  height: 10px;
+  background: var(--paper-d);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  width: 0;
+  transition: width 1s ease;
+}
+
+.skill-pct {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* =========================================
+   COLUMNAS Y REGLA VERTICAL
+========================================= */
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 20px;
+}
+
+.col-rule {
+  border-left: 2px solid var(--paper-d);
+  padding-left: 24px;
+}
+
+/* =========================================
+   INTRO BLOCK — sección inicial del diario
+========================================= */
+
+.intro-block {
+  padding: 50px 0;
+  border-bottom: 1px solid var(--paper-d);
+}
+
+.intro-kicker {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.intro-headline {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+.intro-body {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+
+.intro-sources {
+  list-style: none;
+  margin: 20px 0;
+  padding-left: 0;
+}
+
+.intro-source {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.source-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.source-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.source-name {
+  font-family: var(--serif);
+  font-size: 1rem;
+}
+
+.source-sub {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.intro-note {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-top: 20px;
+}
+
+/* =========================================
+   TEXTO LARGO — body-text
+========================================= */
+
+.body-text {
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   TITULARES DE COLUMNA
+========================================= */
+
+.col-label {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+
+/* =========================================
+   NO RESULTS (cuando no hay entradas)
+========================================= */
+
+.no-results {
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  margin: 40px 0;
+  display: none;
+}
+
+/* =========================================
+   CODE BLOCKS — <pre> y <code>
+========================================= */
+
+.code-block {
+  background: #1a1a1a;
+  color: #f5f5f5;
+  padding: 18px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  overflow-x: auto;
+  margin: 16px 0;
+  box-shadow: var(--shadow-soft);
+}
+
+.code-block code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-family: var(--mono);
+  line-height: 1.5;
+}
+
+/* Inline code (ya definido antes, pero reforzamos) */
+code {
+  background: var(--paper-d);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+/* =========================================
+   SOMBRAS Y BORDES AUXILIARES
+========================================= */
+
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-hard {
+  box-shadow: var(--shadow-hard);
+}
+
+.border {
+  border: 1px solid var(--paper-d);
+}
+
+.border-top {
+  border-top: 1px solid var(--paper-d);
+}
+
+.border-bottom {
+  border-bottom: 1px solid var(--paper-d);
+}
+
+/* =========================================
+   ELEMENTOS DESTACADOS
+========================================= */
+
+.highlight {
+  background: var(--accent-soft);
+  padding: 2px 6px;
+  border-radius: var(--radius);
+}
+
+.mono {
+  font-family: var(--mono);
+}
+
+.serif {
+  font-family: var(--serif);
+}
+
+.display {
+  font-family: var(--display);
+}
+
+/* =========================================
+   ANIMACIONES SUAVES
+========================================= */
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* =========================================
+   TRANSICIONES GENERALES
+========================================= */
+
+a,
+button,
+.filter-btn,
+.nav-links a,
+.nav-cta,
+.lang-btn {
+  transition: all var(--speed);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+  margin-top: 60px;
+  padding: 40px 0;
+  text-align: center;
+  border-top: 1px solid var(--paper-d);
+  background: var(--paper);
+}
+
+.footer-text {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  transition: color var(--speed);
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+.footer-copy {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.footer-copy i {
+  color: var(--accent);
+  margin-right: 6px;
+}
+
+/* =========================================
+   RESPONSIVE — MOBILE FIRST
+========================================= */
+
+@media (max-width: 900px) {
+  .cols {
+    grid-template-columns: 1fr;
+  }
+
+  .col-rule {
+    border-left: none;
+    padding-left: 0;
+    border-top: 2px solid var(--paper-d);
+    padding-top: 24px;
+  }
+
+  .mast-title {
+    font-size: 2.4rem;
+  }
+
+  .entry-headline {
+    font-size: 1.7rem;
+  }
+
+  .intro-headline {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 18px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .stats-row {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .filter-nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .mast-title {
+    font-size: 2rem;
+  }
+
+  .entry {
+    padding: 40px 0;
+  }
+
+  .entry-headline {
+    font-size: 1.5rem;
+  }
+
+  .intro-headline {
+    font-size: 1.7rem;
+  }
+
+  .code-block {
+    font-size: 0.85rem;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 420px) {
+  .mast-top {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .day-badge {
+    font-size: 0.7rem;
+  }
+
+  .entry-tags .etag {
+    font-size: 0.7rem;
+  }
+
+  .filter-btn {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

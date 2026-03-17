@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EquiShift Málaga 2026 - Visualización</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+    h1 { text-align: center; margin-bottom: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    th { background-color: #eee; }
+    .trabajador { background-color: #d0f0c0; }
+    .festivo { background-color: #ffdede; }
+  </style>
+</head>
+<body>
+
+<h1>EquiShift Málaga 2026 - Trabajadores y Festivos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Contrato (h)</th>
+      <th>Festivos Disponibles</th>
+      <th>Vacaciones Disponibles</th>
+    </tr>
+  </thead>
+  <tbody id="tablaTrabajadores">
+    <!-- Se llenará con JS -->
+  </tbody>
+</table>
+
+<script src="index.js"></script>
+<script>
+  // =======================================
+  // Visualización del código original
+  // =======================================
+
+  const tabla = document.getElementById('tablaTrabajadores');
+
+  // Función para mostrar los trabajadores
+  function mostrarTrabajadores(lista) {
+    lista.forEach(trabajador => {
+      const fila = document.createElement('tr');
+      fila.classList.add('trabajador');
+      fila.innerHTML = `
+        <td>${trabajador.nombre}</td>
+        <td>${trabajador.contrato}</td>
+        <td>${trabajador.festivosDisponibles}</td>
+        <td>${trabajador.vacacionesDisponibles}</td>
+      `;
+      tabla.appendChild(fila);
+    });
+  }
+
+  // Mostrar ambos grupos de trabajadores (37.5h y 40h)
+  mostrarTrabajadores(jornada375);
+  mostrarTrabajadores(jornada40);
+
+  // Opcional: mostrar los festivos de Málaga
+  const festivosDiv = document.createElement('div');
+  festivosDiv.innerHTML = `<h2>Festivos de Málaga 2026</h2><ul>${
+    festivosMalaga2026.map(f => `<li class="festivo">${f}</li>`).join('')
+  }</ul>`;
+  document.body.appendChild(festivosDiv);
+</script>
+
+</body>
+</html>

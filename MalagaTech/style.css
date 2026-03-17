@@ -1,0 +1,51 @@
+body{
+  display: flexbox;
+  text-align: center;
+  width: 95%;
+  margin: 0 auto;
+}
+header{
+   background-color : #c9a66b;
+ border: 1px solid black;
+ align-items: center;
+}
+
+
+.nav_menu{
+
+   width: 100%;
+  text-decoration: none;
+  }
+     
+h1, h2 {
+  color: whitesmoke;
+
+}
+
+
+
+a{
+  color: rgb(94, 47, 47);
+  text-decoration: none;
+  margin: 30px;
+ 
+}
+li{
+  display: inline-block;
+  
+
+}
+ul{
+  width: 100%;
+  background-color: antiquewhite;
+}
+
+#logo{
+  padding-right: 0;
+
+}
+img{
+  width: 100%;
+  height: 60vh;
+  display: block;
+}

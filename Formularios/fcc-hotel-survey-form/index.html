@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Survey Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <form id="survey-form">
+        <header>
+            <h1 id="title">Hotel Customer Satisfaction Survey</h1>
+            <p id="description">We appreciate your time spent to help us improve our services</p>
+        </header>
+
+        <section class="user-details">
+            <div class="form-group">
+                <label for="name" id="name-label">Name</label>
+                <input type="text" required id="name" placeholder="Insert your name here">
+            </div>
+
+            <div class="form-group">
+                <label for="email" id="email-label">Email</label>
+                <input type="email" required id="email" placeholder="example@example.es">
+            </div>
+
+            <div class="form-group">
+                <label for="number" id="number-label">Age</label>
+                <input type="number" id="number" placeholder="Age" min="3" max="100">
+            </div>
+
+            <div class="form-group">
+                <label for="dropdown">Booking channel:</label>
+                <select id="dropdown">
+                    <option value="booking">Booking.com</option>
+                    <option value="expedia">Expedia</option>
+                    <option value="google">Google</option>
+                    <option value="rr-ss">Social Network</option>
+                </select>
+            </div>
+        </section>
+
+        <fieldset>
+            <legend>Overall satisfaction</legend>
+            <p>Room type stayed</p>
+            <div class="option-row">
+                <input type="radio" id="room-single" name="room-type" value="room-single">
+                <label for="room-single">Single room</label>
+            </div>
+            <div class="option-row">
+                <input type="radio" id="room-double" name="room-type" value="room-double">
+                <label for="room-double">Double room</label>
+            </div>
+            <div class="option-row">
+                <input type="radio" id="fam-suite" name="room-type" value="fam-suite">
+                <label for="fam-suite">Familiar suite</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Hotel services used</legend>
+            <div class="option-row">
+                <input type="checkbox" id="pool" value="pool">
+                <label for="pool">Swimming pool</label>
+            </div>
+            <div class="option-row">
+                <input type="checkbox" id="cafe" value="cafe">
+                <label for="cafe">Café bar</label>
+            </div>
+            <div class="option-row">
+                <input type="checkbox" id="roof" value="roof">
+                <label for="roof">Roof top</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Additional comments</legend>
+            <textarea id="comment-here" placeholder="Write your comments here" rows="5"></textarea>
+        </fieldset>
+
+        <div class="button-group">
+            <button id="submit" type="submit">Submit</button>
+            <button id="reset" type="reset">Reset</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EquiShift Málaga 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;800&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0f0e;--bg2:#141714;--bg3:#1c1f1c;--bg4:#242724;
+  --border:#2a2e2a;--border2:#3a3f3a;
+  --text:#e8ede8;--muted:#6b7a6b;--muted2:#4a544a;
+  --green:#4ade80;--gbg:#0a2018;--gbg2:#122a1e;
+  --amber:#fbbf24;--abg:#2a1c05;
+  --blue:#60a5fa;--bbg:#0d1c30;
+  --pink:#f472b6;--pbg:#2a0d1c;
+  --teal:#2dd4bf;--tbg:#0a2420;
+  --red:#f87171;--rbg:#2a0f0f;
+  --FD:'Syne',sans-serif;--FM:'DM Mono',monospace;
+}
+html{font-size:14px}
+body{background:var(--bg);color:var(--text);font-family:var(--FM);min-height:100vh;line-height:1.5}
+.hdr{border-bottom:1px solid var(--border);padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg);z-index:200;gap:1rem}
+.logo{font-family:var(--FD);font-weight:800;font-size:1.1rem;letter-spacing:-.02em;display:flex;align-items:center;gap:.4rem}
+.logo em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--green)}
+.hdr-right{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;display:inline-block}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.badge{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .6rem;border-radius:3px;border:1px solid var(--border);color:var(--muted)}
+.badge-ok{background:var(--gbg);color:var(--green);border-color:#1a4028}
+.layout{display:grid;grid-template-columns:200px 1fr;height:calc(100vh - 46px)}
+.sidebar{border-right:1px solid var(--border);padding:1rem;overflow-y:auto}
+.content{overflow-y:auto;padding:1.25rem}
+.nav-section{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);padding:.4rem .5rem .25rem;margin-top:.75rem}
+.nav-section:first-child{margin-top:0}
+.nav-item{display:flex;align-items:center;gap:.5rem;padding:.4rem .6rem;border-radius:4px;cursor:pointer;font-size:.75rem;color:var(--muted);transition:all .12s;width:100%;text-align:left;background:none;border:none}
+.nav-item:hover{color:var(--text);background:var(--bg3)}
+.nav-item.active{color:var(--green);background:var(--gbg)}
+.nav-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.section{display:none}.section.active{display:block}
+.sec-title{font-family:var(--FD);font-weight:800;font-size:1.05rem;margin-bottom:1.1rem;display:flex;align-items:center;gap:.6rem}
+.sec-tag{font-family:var(--FM);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:400}
+.pill{display:inline-block;padding:.12rem .45rem;border-radius:3px;font-size:.65rem;font-weight:500;letter-spacing:.03em;white-space:nowrap}
+.pM{background:var(--gbg);color:var(--green);border:1px solid #1a3a20}
+.pTa{background:var(--abg);color:var(--amber);border:1px solid #3a2a08}
+.pN{background:var(--bbg);color:var(--blue);border:1px solid #1a2c48}
+.pL{background:var(--bg3);color:var(--muted);border:1px solid var(--border)}
+.pF{background:var(--pbg);color:var(--pink);border:1px solid #3a1028}
+.pV{background:#1a1a2e;color:#818cf8;border:1px solid #2a2a4a}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:1rem 1.1rem}
+.card-sm{padding:.65rem .85rem}
+.cg{display:grid;gap:.6rem}
+.cg2{grid-template-columns:1fr 1fr}
+.cg3{grid-template-columns:repeat(3,1fr)}
+.cg5{grid-template-columns:repeat(5,1fr)}
+.stat-val{font-family:var(--FD);font-size:1.6rem;font-weight:800;line-height:1}
+.stat-lbl{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+.stat-sub{font-size:.65rem;color:var(--muted2);margin-top:.25rem}
+.tbl{width:100%;border-collapse:collapse;font-size:.72rem}
+.tbl th{padding:.45rem .6rem;text-align:left;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);font-weight:400;white-space:nowrap}
+.tbl td{padding:.3rem .6rem;border-bottom:1px solid var(--border);vertical-align:middle;white-space:nowrap}
+.tbl tr:hover td{background:var(--bg3)}
+.tbl tr:last-child td{border-bottom:none}
+.row-fds td{background:rgba(255,255,255,.018)}
+.row-fest td{background:rgba(244,114,182,.04)}
+.tbl-wrap{border:1px solid var(--border);border-radius:6px;overflow:hidden;overflow-x:auto}
+.controls{display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem;flex-wrap:wrap}
+.btn{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:.3rem .65rem;border-radius:4px;cursor:pointer;font-family:var(--FM);font-size:.72rem;transition:all .12s}
+.btn:hover{border-color:var(--border2);background:var(--bg4)}
+.btn-p{background:var(--gbg);color:var(--green);border-color:#1a4028}
+.btn-p:hover{background:var(--gbg2)}
+.btn-d{background:var(--rbg);color:var(--red);border-color:#3a1818}
+.month-lbl{font-family:var(--FD);font-weight:600;font-size:.95rem;min-width:120px;text-align:center}
+.week-lbl{font-family:var(--FD);font-weight:600;font-size:.9rem;min-width:180px}
+.chips{display:flex;gap:.35rem;flex-wrap:wrap}
+.chip{font-size:.65rem;letter-spacing:.06em;padding:.25rem .65rem;border-radius:20px;border:1px solid var(--border);cursor:pointer;background:var(--bg3);color:var(--muted);transition:all .12s;display:flex;align-items:center;gap:.35rem;white-space:nowrap}
+.chip.on{color:#0a0f0a}
+.chip[data-id="1"].on{background:#4ade80;border-color:#4ade80}
+.chip[data-id="2"].on{background:#fbbf24;border-color:#fbbf24}
+.chip[data-id="3"].on{background:#60a5fa;border-color:#60a5fa}
+.chip[data-id="4"].on{background:#f472b6;border-color:#f472b6}
+.chip[data-id="5"].on{background:#2dd4bf;border-color:#2dd4bf}
+.chip-dot{width:5px;height:5px;border-radius:50%}
+.wgrid{display:grid;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;font-size:.72rem}
+.wgc{background:var(--bg2);padding:.45rem .55rem}
+.wgh{background:var(--bg3);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center}
+.wgfds{background:rgba(255,255,255,.015)}
+.wgcc{text-align:center}
+.fest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.6rem}
+.fest-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:.75rem 1rem}
+.fest-date{font-family:var(--FM);font-size:.7rem;color:var(--muted);margin-bottom:.2rem}
+.fest-name{font-family:var(--FD);font-weight:600;font-size:.85rem;margin-bottom:.5rem}
+.fest-tag{font-size:.6rem;padding:.15rem .5rem;border-radius:3px;letter-spacing:.04em}
+.cola-item{display:flex;align-items:center;gap:.75rem;padding:.4rem .7rem;border-radius:4px;background:var(--bg3);border:1px solid var(--border);margin-bottom:.35rem}
+.form-group{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.5rem}
+.form-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.form-input{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:.35rem .6rem;border-radius:4px;font-family:var(--FM);font-size:.75rem;outline:none}
+.form-input:focus{border-color:var(--border2)}
+select.form-input option{background:var(--bg3)}
+.log{background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:.6rem .8rem;font-size:.7rem;max-height:110px;overflow-y:auto;margin-top:.75rem}
+.log-entry{padding:.12rem 0;border-bottom:1px solid var(--border);color:var(--muted)}
+.log-entry:last-child{border-bottom:none}
+.log-ok{color:var(--green)}.log-err{color:var(--red)}.log-warn{color:var(--amber)}
+.bar-wrap{display:flex;align-items:center;gap:.4rem}
+.bar{height:4px;border-radius:2px;min-width:2px}
+.bar-n{font-size:.68rem;color:var(--muted);min-width:26px;text-align:right}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="logo">Equi<em>Shift</em> — Málaga 2026</div>
+  <div class="hdr-right">
+    <span id="cov-badge" class="badge">Calculando…</span>
+    <span class="badge"><span class="dot"></span> Motor v2</span>
+  </div>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="nav-section">Principal</div>
+    <button class="nav-item active" onclick="nav('overview',this)"><span class="nav-dot" style="background:var(--green)"></span>Resumen</button>
+    <button class="nav-item" onclick="nav('calendar',this)"><span class="nav-dot" style="background:var(--amber)"></span>Calendario</button>
+    <button class="nav-item" onclick="nav('week',this)"><span class="nav-dot" style="background:var(--blue)"></span>Vista semana</button>
+    <div class="nav-section">Gestión</div>
+    <button class="nav-item" onclick="nav('festivos',this)"><span class="nav-dot" style="background:var(--pink)"></span>Festivos</button>
+    <button class="nav-item" onclick="nav('vacaciones',this)"><span class="nav-dot" style="background:#818cf8"></span>Vacaciones</button>
+    <div class="nav-section">Análisis</div>
+    <button class="nav-item" onclick="nav('stats',this)"><span class="nav-dot" style="background:var(--teal)"></span>Estadísticas</button>
+    <div class="nav-section" style="margin-top:1.5rem">Trabajadores</div>
+    <div id="sb-workers"></div>
+  </nav>
+  <main class="content">
+    <section id="overview" class="section active">
+      <div class="sec-title">Resumen <span class="sec-tag">2026</span></div>
+      <div id="stat-cards" class="cg cg5" style="margin-bottom:1.1rem"></div>
+      <div class="sec-title">Semana 1 <span class="sec-tag">ejemplo</span></div>
+      <div id="ov-week"></div>
+    </section>
+    <section id="calendar" class="section">
+      <div class="controls">
+        <button class="btn" onclick="prevMes()">←</button>
+        <div class="month-lbl" id="month-lbl">Enero 2026</div>
+        <button class="btn" onclick="nextMes()">→</button>
+        <div class="chips" id="cal-chips"></div>
+      </div>
+      <div class="tbl-wrap"><table class="tbl"><thead id="cal-thead"></thead><tbody id="cal-tbody"></tbody></table></div>
+    </section>
+    <section id="week" class="section">
+      <div class="controls">
+        <button class="btn" onclick="prevSem()">←</button>
+        <div class="week-lbl" id="week-lbl">Semana 1</div>
+        <button class="btn" onclick="nextSem()">→</button>
+      </div>
+      <div id="week-grid"></div>
+    </section>
+    <section id="festivos" class="section">
+      <div class="sec-title">Festivos <span class="sec-tag">cola anual rotativa</span></div>
+      <div class="cg cg2" style="margin-bottom:1rem">
+        <div class="card">
+          <div class="stat-lbl" style="margin-bottom:.6rem">Cola de elección 2026</div>
+          <div id="cola-list"></div>
+          <button class="btn" style="margin-top:.6rem;font-size:.65rem" onclick="rotarCola()">Rotar cola (próximo año)</button>
+        </div>
+        <div class="card">
+          <div class="stat-lbl" style="margin-bottom:.6rem">Asignar festivo</div>
+          <div class="form-group"><label class="form-label">Trabajador</label><select id="fest-worker" class="form-input"><option value="">—</option></select></div>
+          <div class="form-group"><label class="form-label">Festivo</label><select id="fest-fecha" class="form-input"><option value="">—</option></select></div>
+          <button class="btn btn-p" onclick="accionFest()">Asignar</button>
+          <div class="log" id="fest-log"><div class="log-entry" style="color:var(--muted2)">Sin operaciones</div></div>
+        </div>
+      </div>
+      <div class="sec-title">Festivos oficiales <span class="sec-tag">15 días</span></div>
+      <div class="fest-grid" id="fest-grid"></div>
+    </section>
+    <section id="vacaciones" class="section">
+      <div class="sec-title">Vacaciones <span class="sec-tag">recalculo automático</span></div>
+      <div class="card" style="margin-bottom:1rem">
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;align-items:flex-end">
+          <div class="form-group"><label class="form-label">Trabajador</label><select id="vac-worker" class="form-input"><option value="">—</option></select></div>
+          <div class="form-group"><label class="form-label">Desde</label><input type="date" id="vac-a" class="form-input" value="2026-07-01" min="2026-01-01" max="2026-12-31"></div>
+          <div class="form-group"><label class="form-label">Hasta</label><input type="date" id="vac-b" class="form-input" value="2026-07-14" min="2026-01-01" max="2026-12-31"></div>
+          <button class="btn btn-p" onclick="accionVac(1)">Asignar</button>
+          <button class="btn btn-d" onclick="accionVac(0)">Quitar</button>
+        </div>
+        <div class="log" id="vac-log"><div class="log-entry" style="color:var(--muted2)">Sin operaciones</div></div>
+      </div>
+      <div class="sec-title">Asignadas <span class="sec-tag">click ✕ para eliminar</span></div>
+      <div id="vac-res"></div>
+    </section>
+    <section id="stats" class="section">
+      <div class="sec-title">Estadísticas anuales <span class="sec-tag">equidad</span></div>
+      <div class="tbl-wrap" style="margin-bottom:1rem"><table class="tbl" id="stats-tbl"></table></div>
+      <div class="cg cg2" id="eq-cards"></div>
+    </section>
+  </main>
+</div>
+<script>
+const T={M:"Mañana",Ta:"Tarde",N:"Noche",L:"Libre",F:"Festivo",V:"Vacaciones"};
+const F26={"2026-01-01":"Año Nuevo","2026-01-06":"Reyes Magos","2026-02-28":"Día de Andalucía","2026-04-02":"Jueves Santo","2026-04-03":"Viernes Santo","2026-05-01":"Día del Trabajo","2026-06-15":"Corpus Christi","2026-08-15":"Asunción","2026-08-22":"Feria Málaga","2026-08-24":"Feria Málaga","2026-10-12":"Fiesta Nacional","2026-11-02":"Todos los Santos","2026-12-07":"Inmaculada (tr.)","2026-12-08":"Inmaculada","2026-12-25":"Navidad"};
+const FSET=new Set(Object.keys(F26));
+const DOW=["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
+const MES=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+const WC={1:"#4ade80",2:"#fbbf24",3:"#60a5fa",4:"#f472b6",5:"#2dd4bf"};
+const TRABS=[
+  {id:1,nombre:"Jose María",contrato:37.5,fa:13,fijo:null},
+  {id:2,nombre:"Salvador",contrato:37.5,fa:13,fijo:null},
+  {id:3,nombre:"Miguel",contrato:37.5,fa:13,fijo:null},
+  {id:4,nombre:"Diego",contrato:40,fa:14,fijo:null},
+  {id:5,nombre:"Rafa",contrato:40,fa:14,fijo:T.N}
+];
+function ei(){return{vac:{1:[],2:[],3:[],4:[],5:[]},fp:{1:[],2:[],3:[],4:[],5:[]},dFds:{1:0,2:0,3:0,4:0,5:0},cola:[1,2,3,4,5]};}
+function dias(){
+  const d=[];
+  for(let x=new Date("2026-01-01");x<=new Date("2026-12-31");x.setDate(x.getDate()+1)){
+    const iso=x.toISOString().split("T")[0],dw=x.getDay();
+    d.push({f:iso,dw,fds:dw===0||dw===6,fest:FSET.has(iso),nf:F26[iso]||null,mes:x.getMonth(),sem:iw(new Date(iso))});
+  }return d;
+}
+function iw(d){const t=new Date(d);t.setHours(0,0,0,0);t.setDate(t.getDate()+3-(t.getDay()+6)%7);const w=new Date(t.getFullYear(),0,4);return 1+Math.round(((t-w)/86400000-3+(w.getDay()+6)%7)/7);}
+function ad(s,n){const d=new Date(s);d.setDate(d.getDate()+n);return d.toISOString().split("T")[0];}
+const ROFF={1:0,2:1,3:2,4:3};
+function tBloque(sem,wid){return((sem-1+(ROFF[wid]||0)*2)%4)<2?T.M:T.Ta;}
+function elcLib(dias,num,pfds,deu){
+  if(!dias||!dias.length)return new Set();
+  num=Math.min(num,dias.length);if(!num)return new Set();
+  const bl=[];
+  for(let i=0;i<=dias.length-num;i++){
+    const b=dias.slice(i,i+num);let ok=true;
+    for(let j=1;j<b.length;j++)if(ad(b[j-1].f,1)!==b[j].f){ok=false;break;}
+    if(!ok)continue;bl.push({b,fn:b.filter(d=>d.fds).length});
+  }
+  if(!bl.length)return new Set(dias.slice(0,num).map(d=>d.f));
+  let c=bl;if(deu){const w=bl.filter(x=>x.fn>0);if(w.length)c=w;}
+  c.sort((a,b)=>pfds?b.fn-a.fn:a.fn-b.fn);
+  return new Set(c[0].b.map(d=>d.f));
+}
+function genCal(es){
+  const DIAS=dias(),res=new Map();
+  const rots=TRABS.filter(t=>!t.fijo),rafa=TRABS.find(t=>t.fijo===T.N);
+  const cFds=new Map(TRABS.map(t=>[t.id,0])),cN=new Map(TRABS.map(t=>[t.id,0])),cL=new Map(TRABS.map(t=>[t.id,0]));
+  const tgt=t=>t.contrato===40?104:157;
+  const deu={...es.dFds};
+  const eV=(id,f)=>(es.vac[id]||[]).includes(f),eF=(id,f)=>(es.fp[id]||[]).includes(f);
+  const sm=new Map();
+  for(const d of DIAS){if(!sm.has(d.sem))sm.set(d.sem,[]);sm.get(d.sem).push(d);}
+  const so=[...sm.entries()].sort((a,b)=>a[0]-b[0]),tot=so.length;
+  for(const[ns,ds] of so){
+    const fl=new Map(ds.map(d=>[d.f,[]]));
+    for(const d of ds)for(const t of TRABS)if(eV(t.id,d.f)||eF(t.id,d.f))fl.get(d.f).push(t.id);
+    const sr=Math.max(1,tot-so.findIndex(s=>s[0]===ns));
+    const rafD=ds.filter(d=>!(fl.get(d.f)||[]).includes(rafa.id));
+    const rLS=elcLib(rafD,2,true,deu[rafa.id]>0);
+    for(const d of ds)if((fl.get(d.f)||[]).includes(rafa.id))rLS.add(d.f);
+    const rRS=new Map();
+    for(const r of rots){
+      const lr=Math.max(0,tgt(r)-(cL.get(r.id)||0));
+      const base=r.contrato===40?2:Math.min(3,Math.max(2,Math.round(lr/sr)));
+      const dp=ds.filter(d=>!(fl.get(d.f)||[]).includes(r.id));
+      const ls=elcLib(dp,base,true,deu[r.id]>0);
+      for(const d of ds)if((fl.get(d.f)||[]).includes(r.id))ls.add(d.f);
+      rRS.set(r.id,ls);
+    }
+    for(const d of ds){
+      const tn=new Map(),lH=new Set();
+      for(const id of(fl.get(d.f)||[])){lH.add(id);tn.set(id,eV(id,d.f)?T.V:T.F);}
+      if(rLS.has(d.f)&&!lH.has(rafa.id)){lH.add(rafa.id);tn.set(rafa.id,T.L);}
+      for(const r of rots)if(!lH.has(r.id)&&rRS.get(r.id)?.has(d.f))lH.add(r.id);
+      if(lH.size>2){const nm=[...lH].filter(id=>!tn.has(id));nm.sort((a,b)=>(cFds.get(b)||0)-(cFds.get(a)||0));while(lH.size>2&&nm.length)lH.delete(nm.shift());}
+      if(lH.size<2){const c=rots.filter(r=>!lH.has(r.id)&&!tn.has(r.id)).sort((a,b)=>(cFds.get(b.id)||0)-(cFds.get(a.id)||0));while(lH.size<2&&c.length)lH.add(c.shift().id);}
+      for(const id of lH){if(!tn.has(id))tn.set(id,T.L);if(d.fds)cFds.set(id,(cFds.get(id)||0)+1);cL.set(id,(cL.get(id)||0)+1);}
+      if(lH.has(rafa.id)){const c=rots.filter(r=>!lH.has(r.id)).sort((a,b)=>(cN.get(a.id)||0)-(cN.get(b.id)||0));if(c.length){const x=c[0];tn.set(x.id,T.N);cN.set(x.id,(cN.get(x.id)||0)+1);}}
+      else if(!tn.has(rafa.id))tn.set(rafa.id,T.N);
+      const st=TRABS.filter(t=>!tn.has(t.id));
+      const hM=[...tn.values()].includes(T.M),hTa=[...tn.values()].includes(T.Ta);
+      if(st.length===2){const b0=tBloque(ns,st[0].id),b1=tBloque(ns,st[1].id);if(b0!==b1){tn.set(st[0].id,b0);tn.set(st[1].id,b1);}else{tn.set(st[0].id,T.M);tn.set(st[1].id,T.Ta);}}
+      else if(st.length===1){if(!hM)tn.set(st[0].id,T.M);else if(!hTa)tn.set(st[0].id,T.Ta);else tn.set(st[0].id,tBloque(ns,st[0].id));}
+      else if(st.length>2){const nec=[];if(!hM)nec.push(T.M);if(!hTa)nec.push(T.Ta);st.forEach((t,i)=>tn.set(t.id,nec[i]||tBloque(ns,t.id)));}
+      res.set(d.f,{tn,fds:d.fds,fest:d.fest,nf:d.nf,dw:d.dw,sem:ns,mes:d.mes});
+    }
+    for(const d of ds){if(!d.fds)continue;for(const t of TRABS){if(eF(t.id,d.f))deu[t.id]=(deu[t.id]||0)+1;const dr=res.get(d.f);if(dr){const tv=dr.tn.get(t.id);if((tv===T.L||tv===T.F)&&deu[t.id]>0)deu[t.id]--;}}}
+  }
+  return res;
+}
+function asgVac(es,id,a,b){const s=JSON.parse(JSON.stringify(es));const fs=[];for(let d=new Date(a);d<=new Date(b);d.setDate(d.getDate()+1))fs.push(d.toISOString().split("T")[0]);s.vac[id]=[...new Set([...s.vac[id],...fs])].sort();return s;}
+function delVac(es,id,a,b){const s=JSON.parse(JSON.stringify(es));const fs=new Set();for(let d=new Date(a);d<=new Date(b);d.setDate(d.getDate()+1))fs.add(d.toISOString().split("T")[0]);s.vac[id]=s.vac[id].filter(f=>!fs.has(f));return s;}
+function pdFest(es,id,fecha){
+  if(!FSET.has(fecha))return{ok:false,es,msg:`${fecha} no es festivo.`};
+  const t=TRABS.find(w=>w.id===id);
+  if((es.fp[id]||[]).length>=t.fa)return{ok:false,es,msg:`${t.nombre} agotó sus ${t.fa} festivos.`};
+  if((es.fp[id]||[]).includes(fecha))return{ok:false,es,msg:`${t.nombre} ya tiene ese festivo.`};
+  const ot=TRABS.filter(w=>w.id!==id).filter(w=>(es.fp[w.id]||[]).includes(fecha)||(es.vac[w.id]||[]).includes(fecha)).length;
+  if(ot>=2)return{ok:false,es,msg:`Ya hay 2 compañeros libres el ${fecha}.`};
+  const s=JSON.parse(JSON.stringify(es));s.fp[id].push(fecha);s.fp[id].sort();
+  const dw=new Date(fecha).getDay();if(dw===0||dw===6)s.dFds[id]=(s.dFds[id]||0)+1;
+  return{ok:true,es:s,msg:`✓ ${t.nombre} → ${F26[fecha]}${dw===0||dw===6?" ⚠ FdS":""}`};
+}
+function rotCola(es){const s=JSON.parse(JSON.stringify(es));s.cola.unshift(s.cola.pop());return s;}
+function valCob(cal){let ok=0,err=0;for(const[,d]of cal){const v=[...d.tn.values()],tr=v.filter(x=>x===T.M||x===T.Ta||x===T.N).length,li=v.filter(x=>x===T.L||x===T.F||x===T.V).length;if(tr===3&&li===2&&v.includes(T.M)&&v.includes(T.Ta)&&v.includes(T.N))ok++;else err++;}return{ok,err};}
+function calcSt(cal){
+  const s=new Map(TRABS.map(t=>[t.id,{nombre:t.nombre,contrato:t.contrato,tr:0,li:0,vc:0,fe:0,ma:0,ta:0,no:0,fds:0}]));
+  for(const[fecha,d]of cal){const fds=[0,6].includes(new Date(fecha).getDay());for(const t of TRABS){const st=s.get(t.id),tv=d.tn.get(t.id);if(tv===T.M){st.tr++;st.ma++;}else if(tv===T.Ta){st.tr++;st.ta++;}else if(tv===T.N){st.tr++;st.no++;}else if(tv===T.L){st.li++;if(fds)st.fds++;}else if(tv===T.F){st.fe++;if(fds)st.fds++;}else if(tv===T.V)st.vc++;}}
+  return[...s.values()];
+}
+
+// UI STATE
+let ES=ei(),CAL=genCal(ES),ALD=[...CAL.keys()].sort();
+let curMes=0,curSem=1;let vW=new Set(TRABS.map(t=>t.id));
+
+function rc(){CAL=genCal(ES);ALD=[...CAL.keys()].sort();renderAll();}
+
+function pH(tv){const m={[T.M]:"pM MAN",[T.Ta]:"pTa TAR",[T.N]:"pN NOC",[T.L]:"pL LIB",[T.F]:"pF FES",[T.V]:"pV VAC"};const[c,l]=(m[tv]||"pL ?").split(" ");return`<span class="pill ${c}">${l}</span>`;}
+
+function rStatCards(){
+  const st=calcSt(CAL),cv=valCob(CAL);
+  const badg=document.getElementById("cov-badge");
+  badg.className=cv.err===0?"badge badge-ok":"badge";
+  badg.textContent=cv.err===0?"✓ 365/365":"✗ "+cv.err+" errores";
+  const ro=st.filter(s=>s.contrato===37.5);
+  const avgF=Math.round(ro.reduce((a,s)=>a+s.fds,0)/ro.length);
+  const mxF=Math.max(...ro.map(s=>s.fds)),mnF=Math.min(...ro.map(s=>s.fds));
+  const raf=st.find(s=>s.nombre==="Rafa");
+  document.getElementById("stat-cards").innerHTML=[
+    {l:"Cobertura",v:cv.err===0?"365/365":cv.ok+"/365",s:"días perfectos",c:"var(--green)"},
+    {l:"FdS libres media",v:avgF,s:`rango ${mnF}–${mxF}`,c:"var(--amber)"},
+    {l:"Festivos Málaga",v:15,s:"oficiales 2026",c:"var(--pink)"},
+    {l:"Noches Rafa",v:raf.no,s:"turno fijo",c:"var(--teal)"},
+    {l:"Equipo",v:5,s:"2 contratos · 3 turnos",c:"var(--blue)"}
+  ].map(x=>`<div class="card card-sm"><div class="stat-lbl">${x.l}</div><div class="stat-val" style="color:${x.c}">${x.v}</div><div class="stat-sub">${x.s}</div></div>`).join("");
+}
+
+function rSbWorkers(){
+  const st=calcSt(CAL);
+  document.getElementById("sb-workers").innerHTML=TRABS.map(t=>{
+    const s=st.find(x=>x.nombre===t.nombre);
+    return`<div class="nav-item" style="flex-direction:column;align-items:flex-start;gap:.15rem;cursor:default"><span style="color:${WC[t.id]};font-family:var(--FD);font-weight:600;font-size:.78rem">${t.nombre}</span><span style="font-size:.6rem;color:var(--muted)">${t.contrato}h · ${s.tr}d · ${s.fds} FdS</span></div>`;
+  }).join("");
+}
+
+function rOvWeek(){rWGrid("ov-week",ALD.filter(f=>iw(new Date(f))===1).slice(0,7));}
+
+function rCalendar(){
+  document.getElementById("month-lbl").textContent=MES[curMes]+" 2026";
+  const fs=ALD.filter(f=>new Date(f).getMonth()===curMes);
+  const vis=TRABS.filter(t=>vW.has(t.id));
+  document.getElementById("cal-thead").innerHTML=`<tr><th>Fecha</th><th></th>${vis.map(t=>`<th style="color:${WC[t.id]}">${t.nombre}</th>`).join("")}<th>Festivo</th></tr>`;
+  document.getElementById("cal-tbody").innerHTML=fs.map(f=>{
+    const d=CAL.get(f),dt=new Date(f);
+    const rc=d.fest?"row-fest":d.fds?"row-fds":"";
+    return`<tr class="${rc}"><td style="color:var(--muted);font-size:.65rem">${f.slice(5)}</td><td style="color:var(--muted2);font-size:.6rem;width:28px">${DOW[dt.getDay()]}</td>${vis.map(t=>`<td>${pH(d.tn.get(t.id)||"")}</td>`).join("")}<td style="font-size:.65rem;color:var(--pink);opacity:.8">${d.nf||""}</td></tr>`;
+  }).join("");
+}
+
+function rCalChips(){
+  document.getElementById("cal-chips").innerHTML=TRABS.map(t=>`<div class="chip${vW.has(t.id)?" on":""}" data-id="${t.id}" onclick="twk(${t.id},this)"><span class="chip-dot" style="background:${WC[t.id]}"></span>${t.nombre}</div>`).join("");
+}
+function twk(id,el){if(vW.has(id)){if(vW.size>1)vW.delete(id);}else vW.add(id);rCalChips();rCalendar();}
+
+function rWeek(){
+  const allS=[...new Set(ALD.map(f=>iw(new Date(f))))].sort((a,b)=>a-b);
+  const sem=allS[curSem-1]||allS[0];
+  const fs=ALD.filter(f=>iw(new Date(f))===sem);
+  document.getElementById("week-lbl").textContent=`Semana ${sem} · ${fs[0]?.slice(5)||""} → ${fs[fs.length-1]?.slice(5)||""}`;
+  rWGrid("week-grid",fs);
+}
+
+function rWGrid(cid,fs){
+  let h=`<div class="wgc wgh"></div>`;
+  for(const f of fs){const dt=new Date(f),fds=dt.getDay()===0||dt.getDay()===6;h+=`<div class="wgc wgh${fds?" wgfds":""}">${DOW[dt.getDay()]}<br><span style="color:var(--muted2);font-size:.6rem">${f.slice(5)}</span></div>`;}
+  for(const t of TRABS){
+    h+=`<div class="wgc" style="border-right:1px solid var(--border)"><div style="font-family:var(--FD);font-weight:600;font-size:.78rem;display:flex;align-items:center;gap:.35rem"><span style="width:6px;height:6px;border-radius:50%;background:${WC[t.id]};display:inline-block"></span>${t.nombre}</div><div style="font-size:.6rem;color:var(--muted)">${t.contrato}h</div></div>`;
+    for(const f of fs){const dt=new Date(f),fds=dt.getDay()===0||dt.getDay()===6;h+=`<div class="wgc${fds?" wgfds":""} wgcc">${pH(CAL.get(f)?.tn.get(t.id)||"")}</div>`;}
+  }
+  const el=document.getElementById(cid);
+  el.className="wgrid";el.style.gridTemplateColumns=`120px repeat(${fs.length},1fr)`;el.innerHTML=h;
+}
+
+function rFestivos(){
+  document.getElementById("cola-list").innerHTML=ES.cola.map((id,i)=>{
+    const t=TRABS.find(x=>x.id===id);
+    return`<div class="cola-item"><span style="font-family:var(--FM);font-size:.7rem;color:var(--muted2)">${i+1}</span><span style="font-family:var(--FD);font-weight:600;color:${WC[id]}">${t.nombre}</span><span style="font-size:.65rem;color:var(--muted);margin-left:auto">${(ES.fp[id]||[]).length}/${t.fa}</span></div>`;
+  }).join("");
+  const fw=document.getElementById("fest-worker");
+  fw.innerHTML=`<option value="">— elige —</option>`+TRABS.map(t=>`<option value="${t.id}">${t.nombre} (${(ES.fp[t.id]||[]).length}/${t.fa})</option>`).join("");
+  document.getElementById("fest-fecha").innerHTML=`<option value="">— elige —</option>`+Object.entries(F26).map(([f,n])=>{
+    const dw=new Date(f).getDay(),fds=dw===0||dw===6;
+    const asig=TRABS.filter(t=>(ES.fp[t.id]||[]).includes(f)).map(t=>t.nombre).join(", ");
+    return`<option value="${f}">${f.slice(5)} ${n}${fds?" ★FdS":""}${asig?" ("+asig+")":""}</option>`;
+  }).join("");
+  document.getElementById("fest-grid").innerHTML=Object.entries(F26).map(([f,n])=>{
+    const dw=new Date(f).getDay(),fds=dw===0||dw===6;
+    const asig=TRABS.filter(t=>(ES.fp[t.id]||[]).includes(f));
+    return`<div class="fest-card">
+      <div class="fest-date">${f} ${DOW[dw]}${fds?" · FdS":""}</div>
+      <div class="fest-name">${n}</div>
+      <div style="display:flex;gap:.3rem;flex-wrap:wrap;align-items:center">
+        ${asig.length?asig.map(t=>`<span class="fest-tag" style="background:${WC[t.id]}22;color:${WC[t.id]}">${t.nombre} <span onclick="devolverF(${t.id},'${f}')" style="cursor:pointer;opacity:.6">✕</span></span>`).join(""):`<span style="font-size:.65rem;color:var(--muted)">Libre</span>`}
+        ${asig.length<2?`<button class="btn" style="font-size:.6rem;padding:.15rem .45rem;margin-left:auto" onclick="asigFR('${f}')">+ asignar</button>`:""}
+      </div>
+      ${fds?`<div style="font-size:.6rem;color:var(--amber);margin-top:.35rem">⚠ FdS — deuda anotada si se pide</div>`:""}
+    </div>`;
+  }).join("");
+}
+function accionFest(){
+  const id=parseInt(document.getElementById("fest-worker").value);
+  const f=document.getElementById("fest-fecha").value;
+  if(!id||!f){log("fest-log","Selecciona trabajador y festivo","w");return;}
+  const r=pdFest(ES,id,f);log("fest-log",r.msg,r.ok?"ok":"err");
+  if(r.ok){ES=r.es;rc();}
+}
+function asigFR(f){
+  const id=ES.cola[0];
+  const r=pdFest(ES,id,f);log("fest-log",r.msg,r.ok?"ok":"err");
+  if(r.ok){ES=r.es;rc();}
+}
+function devolverF(id,f){
+  const s=JSON.parse(JSON.stringify(ES));s.fp[id]=s.fp[id].filter(x=>x!==f);ES=s;rc();
+  log("fest-log",`Festivo ${f} devuelto`,"w");
+}
+function rotarCola(){ES=rotCola(ES);rFestivos();log("fest-log","Cola rotada","ok");}
+
+function rVacaciones(){
+  const sw=document.getElementById("vac-worker");
+  sw.innerHTML=`<option value="">— elige —</option>`+TRABS.map(t=>`<option value="${t.id}">${t.nombre} (${(ES.vac[t.id]||[]).length}d vac)</option>`).join("");
+  let html="";
+  for(const t of TRABS){
+    const vs=ES.vac[t.id]||[];if(!vs.length)continue;
+    const bl=[];let ac=null;
+    for(const f of vs.sort()){if(!ac){ac={a:f,b:f};}else if(ad(ac.b,1)===f){ac.b=f;}else{bl.push(ac);ac={a:f,b:f};}}
+    if(ac)bl.push(ac);
+    html+=`<div class="card card-sm" style="margin-bottom:.5rem"><div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><span style="font-family:var(--FD);font-weight:600;color:${WC[t.id]}">${t.nombre}</span><span style="font-size:.65rem;color:var(--muted)">${vs.length} días</span></div><div style="display:flex;gap:.4rem;flex-wrap:wrap">${bl.map(b=>`<div style="display:flex;align-items:center;gap:.3rem;background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:.2rem .5rem;font-size:.65rem"><span>${b.a.slice(5)} → ${b.b.slice(5)}</span><button onclick="quitarVB(${t.id},'${b.a}','${b.b}')" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:.75rem">✕</button></div>`).join("")}</div></div>`;
+  }
+  document.getElementById("vac-res").innerHTML=html||`<div style="color:var(--muted);font-size:.8rem">Sin vacaciones asignadas</div>`;
+}
+function accionVac(asig){
+  const id=parseInt(document.getElementById("vac-worker").value);
+  const a=document.getElementById("vac-a").value,b=document.getElementById("vac-b").value;
+  if(!id||!a||!b){log("vac-log","Faltan datos","w");return;}
+  const n=Math.round((new Date(b)-new Date(a))/86400000)+1;
+  if(asig){ES=asgVac(ES,id,a,b);log("vac-log",`✓ ${TRABS.find(t=>t.id===id).nombre} — ${n}d (${a}→${b})  recalculando...`,"ok");}
+  else{ES=delVac(ES,id,a,b);log("vac-log",`Vacaciones eliminadas ${a}→${b}`,"w");}
+  rc();
+}
+function quitarVB(id,a,b){ES=delVac(ES,id,a,b);log("vac-log",`Bloque ${a}→${b} eliminado`,"w");rc();}
+
+function rStats(){
+  const st=calcSt(CAL);const mxT=Math.max(...st.map(s=>s.tr)),mxF=Math.max(...st.map(s=>s.fds));
+  document.getElementById("stats-tbl").innerHTML=`<thead><tr><th>Trabajador</th><th>Contrato</th><th>Trabaj.</th><th>Mañanas</th><th>Tardes</th><th>Noches</th><th>FdS libres</th><th>Festivos</th><th>Vacaciones</th></tr></thead><tbody>${st.map(s=>{
+    const wc=WC[TRABS.find(t=>t.nombre===s.nombre)?.id]||"#fff";
+    return`<tr><td><span style="font-family:var(--FD);font-weight:600;color:${wc}">${s.nombre}</span></td><td><span style="color:var(--muted);font-size:.7rem">${s.contrato}h</span></td><td><div class="bar-wrap"><div class="bar" style="width:${Math.round(s.tr/mxT*70)}px;background:${wc}44"></div><span class="bar-n">${s.tr}</span></div></td><td>${s.ma}</td><td>${s.ta}</td><td>${s.no>0?`<span style="color:var(--blue)">${s.no}</span>`:"—"}</td><td><div class="bar-wrap"><div class="bar" style="width:${Math.round(s.fds/mxF*50)}px;background:${wc}66"></div><span class="bar-n">${s.fds}</span></div></td><td>${s.fe}</td><td>${s.vc}</td></tr>`;
+  }).join("")}</tbody>`;
+  const ro=st.filter(s=>s.contrato===37.5);
+  const avg=(ro.reduce((a,s)=>a+s.fds,0)/ro.length).toFixed(1);
+  const mx=Math.max(...ro.map(s=>s.fds)),mn=Math.min(...ro.map(s=>s.fds));
+  document.getElementById("eq-cards").innerHTML=`
+    <div class="card card-sm"><div class="stat-lbl">Equidad FdS libres</div><div style="display:flex;gap:1rem;margin-top:.5rem"><div><div style="font-size:.65rem;color:var(--muted)">Media</div><div style="font-family:var(--FD);font-size:1.3rem;font-weight:800;color:var(--amber)">${avg}</div></div><div><div style="font-size:.65rem;color:var(--muted)">Rango</div><div style="font-family:var(--FD);font-size:1.3rem;font-weight:800;color:${mx-mn<=2?"var(--green)":"var(--red)"}">${mn}–${mx}</div></div><div><div style="font-size:.65rem;color:var(--muted)">Desvío</div><div style="font-family:var(--FD);font-size:1.3rem;font-weight:800;color:${mx-mn<=2?"var(--green)":"var(--amber)"}">${mx-mn}</div></div></div><div style="font-size:.65rem;color:var(--muted);margin-top:.4rem">${mx-mn<=2?"✓ Distribución equitativa":"⚠ Desequilibrio detectado — ajusta vacaciones"}</div></div>
+    <div class="card card-sm"><div class="stat-lbl">Deuda FdS pendiente</div>${TRABS.map(t=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:.25rem 0;border-bottom:1px solid var(--border);font-size:.72rem"><span style="color:${WC[t.id]}">${t.nombre}</span><span style="color:${ES.dFds[t.id]>0?"var(--amber)":"var(--muted)"}">${ES.dFds[t.id]>0?"⚠ "+ES.dFds[t.id]+" pendiente":"✓ al día"}</span></div>`).join("")}</div>`;
+}
+
+function log(id,msg,tp){
+  const el=document.getElementById(id);
+  const cls=tp==="ok"?"log-ok":tp==="err"?"log-err":"log-warn";
+  const e=document.createElement("div");e.className=`log-entry ${cls}`;
+  const h=new Date();e.textContent=`[${h.getHours().toString().padStart(2,"0")}:${h.getMinutes().toString().padStart(2,"0")}] ${msg}`;
+  if(el.children[0]?.style?.color==="var(--muted2)")el.innerHTML="";
+  el.prepend(e);
+}
+
+function nav(id,el){
+  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));
+  document.getElementById(id).classList.add("active");el.classList.add("active");
+  if(id==="calendar"){rCalChips();rCalendar();}
+  if(id==="week")rWeek();
+  if(id==="festivos")rFestivos();
+  if(id==="vacaciones")rVacaciones();
+  if(id==="stats")rStats();
+}
+function prevMes(){if(curMes>0){curMes--;rCalendar();}}
+function nextMes(){if(curMes<11){curMes++;rCalendar();}}
+function prevSem(){if(curSem>1){curSem--;rWeek();}}
+function nextSem(){const tot=[...new Set(ALD.map(f=>iw(new Date(f))))].length;if(curSem<tot){curSem++;rWeek();}}
+function renderAll(){
+  rStatCards();rSbWorkers();rOvWeek();
+  const act=document.querySelector(".section.active")?.id;
+  if(act==="calendar"){rCalChips();rCalendar();}
+  if(act==="week")rWeek();
+  if(act==="festivos")rFestivos();
+  if(act==="vacaciones")rVacaciones();
+  if(act==="stats")rStats();
+}
+renderAll();
+</script>
+</body>
+</html>
