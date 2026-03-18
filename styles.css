@@ -133,9 +133,9 @@ header svg {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.tarjeta-historia:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+.tarjeta-historia.hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .tarjeta-historia img {
@@ -312,6 +312,17 @@ header svg {
     align-items: center;
   }
 }
+/* ===== MENÚ HAMBURGUESA ===== */
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2D5A3F;
+}
+
+/* Móvil */
 
 /* ----- MÓVIL: hasta 600px ----- */
 @media (max-width: 600px) {
@@ -360,5 +371,27 @@ header svg {
   /* Tarjetas y menú apilados verticalmente */
   .contenedor-cards, .menu-grid {
     grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+
+  .nav {
+    display: none; 
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .nav.active {
+    display: flex; 
+  }
+
+  .hamburger {
+    display: block; 
+  }
+
+  header {
+    justify-content: space-between;
+    padding: 10px 20px;
   }
 }

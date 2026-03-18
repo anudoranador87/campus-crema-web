@@ -13,3 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   tarjetas.forEach(tarjeta => observer.observe(tarjeta));
 });
+
+document.querySelectorAll(".tarjeta-historia").forEach(card => {
+  card.addEventListener("mouseenter", () => card.classList.add("hover"));
+  card.addEventListener("mouseleave", () => card.classList.remove("hover"));
+});
+
+
+const btn = document.getElementById("hamburgerBtn");
+const nav = document.querySelector(".nav");
+
+btn.addEventListener("click", () => {
+  nav.classList.toggle("active");
+});
