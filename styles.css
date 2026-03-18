@@ -1,0 +1,364 @@
+/* ========================= VARIABLES GLOBALES ========================= */
+/* He definido colores y tipografía global para mantener consistencia */
+:root {
+    --color-principal: #2D5A3F;
+    --color-secundario: #C5A059;
+    --color-fondo: #F5F1E9;
+    --color-texto: #2B2B2B;
+    --fuente-principal: Arial, sans-serif;
+}
+
+/* ========================= RESET Y BODY ========================= */
+/* He eliminado márgenes, aplicado flex vertical y fondo crema */
+body {
+    margin: 0;
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* ========================= HEADER ========================= */
+/* He alineado logo, título y navegación */
+header {
+    background-color: #FDF5E6;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px 0;
+}
+
+header svg {
+    width: 100px;
+    height: auto;
+}
+
+.titulo h1 {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+.titulo h2 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #495E57;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ================= NAV PRINCIPAL HORIZONTAL ================= */
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding: 15px 0;
+  background-color: rgba(245, 241, 233, 0.95); /* fondo claro, semi-transparente */
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* ligera sombra para destacar */
+}
+
+.nav a {
+  padding: 10px 25px;
+  border-radius: 30px;
+  border: 2px solid #C5A059; /* dorado cálido */
+  background-color: #FDF5E6; /* color crema, suave */
+  color: #2D5A3F; /* verde elegante oscuro para contraste */
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.nav a:hover {
+  background-color: #C5A059; /* dorado cálido */
+  color: #FDF5E6; /* texto claro sobre dorado */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* ========================= BANNER ========================= */
+/* He reducido altura y añadido overlay con texto centrado */
+#banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 300px;
+}
+
+#banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+}
+
+.banner-overlay h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.banner-overlay p {
+    margin: 5px 0 0;
+    font-size: 1.2rem;
+}
+
+/* ========================= TARJETAS ========================= */
+/* He hecho grid responsive para tarjetas principales */
+.contenedor-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 30px;
+    justify-items: center;
+}
+
+.tarjeta-historia {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-historia:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.tarjeta-historia img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 10px auto;
+}
+
+/* =========================
+   SECCIÓN LABORATORIO DE SABOR
+========================= */
+.laboratorio-sabor {
+  background-color: #FDF5E6; /* He usado un color crema agradable */
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.contenido-laboratorio {
+  max-width: 1200px; /* He limitado el ancho para desktop */
+  text-align: center; /* Todo centrado para mejor visual */
+}
+
+.cards-laboratorio {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap; /* Permite que en móviles se pongan en columna */
+  margin-top: 30px;
+}
+
+.card-laboratorio {
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  width: 350px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-laboratorio:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.card-laboratorio h3 {
+  margin-bottom: 15px;
+  color: #2D5A3F; /* He usado mi color principal */
+}
+
+.card-laboratorio ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.card-laboratorio li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Botón de la carta */
+.btn-carta {
+  margin-top: 30px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  background-color: #2D5A3F;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-carta:hover {
+  background-color: #C5A059;
+  transform: translateY(-3px);
+}
+
+/* =========================
+   FORMULARIO DE RESERVAS
+========================= */
+.reserva {
+  background-color: #F5F1E9;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.form-container {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  max-width: 500px;
+  width: 100%;
+  text-align: left; /* Mejor lectura */
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2D5A3F;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2D5A3F;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #C5A059;
+  transform: translateY(-2px);
+}
+
+
+/* ========================= FOOTER ========================= */
+.main-footer {
+    background-color: #FDF5E6;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.main-footer iframe {
+    width: 100%;
+    height: 250px;
+    border: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 20px 0;
+}
+
+.footer-content div h4 {
+    margin-bottom: 5px;
+}
+
+/* ========================= MEDIA QUERIES ========================= */
+
+/* ----- TABLET: hasta 1024px ----- */
+@media (max-width: 1024px) {
+
+  /* Tarjetas y menú en 2 columnas */
+  .contenedor-cards, .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Cards del laboratorio se apilan en columna */
+  .cards-laboratorio {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ----- MÓVIL: hasta 600px ----- */
+@media (max-width: 600px) {
+
+  /* Header apilado verticalmente */
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Navbar vertical, links centrados */
+  .nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav a {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Banner más bajo */
+  #banner img {
+    height: 200px;
+  }
+
+  .banner-overlay h1 {
+    font-size: 1.5rem;
+  }
+
+  .banner-overlay p {
+    font-size: 1rem;
+  }
+
+  /* Contenedor de formulario ajustado */
+  .form-container {
+    padding: 20px;
+  }
+
+  /* Botón carta ancho completo */
+  .btn-carta {
+    width: 100%;
+  }
+
+  /* Tarjetas y menú apilados verticalmente */
+  .contenedor-cards, .menu-grid {
+    grid-template-columns: 1fr;
+  }
+}
