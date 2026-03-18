@@ -1,0 +1,135 @@
+/* ================= VARIABLES GLOBALES ================= */
+:root {
+    --color-principal: #2D5A3F;
+    --color-secundario: #C5A059;
+    --color-fondo: #FAF7F0;
+    --color-texto: #2B2B2B;
+    --fuente-principal: 'Georgia', serif;
+}
+
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/* ================= LAYOUT ================= */
+.layout-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: var(--color-principal);
+}
+
+header p {
+    font-size: 1.1rem;
+    color: var(--color-secundario);
+    font-style: italic;
+}
+
+/* ================= MENU GRID ================= */
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas para todas las secciones */
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* Secciones */
+.columna h2 {
+    color: var(--color-principal);
+    font-size: 1.6rem;
+    border-bottom: 3px solid var(--color-secundario);
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* Cada item del menú */
+.item {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 25px rgba(0,0,0,0.2);
+}
+
+/* Imagen del producto */
+.item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Información del producto */
+.info {
+    padding: 15px;
+    position: relative;
+}
+
+.info strong {
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.info p {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.precio {
+    font-weight: bold;
+    color: var(--color-secundario);
+    font-size: 1rem;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    text-align: center;
+    padding: 25px;
+    background-color: #FDF5E6;
+    border-top: 1px solid #ccc;
+}
+
+/* ================= MEDIA QUERIES ================= */
+@media (max-width: 1200px) {
+    .menu-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .menu-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .menu-container {
+        grid-template-columns: 1fr;
+    }
+}
