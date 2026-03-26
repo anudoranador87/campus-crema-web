@@ -47,6 +47,15 @@ header svg {
     letter-spacing: 1px;
 }
 
+.hamburger {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+header {
+  position: relative;
+}
 /* ================= NAV PRINCIPAL HORIZONTAL ================= */
 .nav {
   display: flex;
@@ -274,28 +283,116 @@ header svg {
 
 /* ========================= FOOTER ========================= */
 .main-footer {
-    background-color: #FDF5E6;
-    padding: 30px 20px;
-    text-align: center;
+  background-color: #1a3d2b;
+  color: #FDF5E6;
+  padding: 40px 20px 20px;
+  text-align: center;
 }
 
 .main-footer iframe {
-    width: 100%;
-    height: 250px;
-    border: 0;
+  width: 100%;
+  max-width: 800px;
+  height: 200px;
+  border: 0;
+  border-radius: 10px;
+  margin-bottom: 30px;
 }
 
 .footer-content {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
-.footer-content div h4 {
-    margin-bottom: 5px;
+.footer-content div {
+  text-align: left;
 }
 
+.footer-content h4 {
+  color: #C5A059;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(197,160,89,0.3);
+  padding-bottom: 6px;
+}
+
+.footer-content p {
+  font-size: 0.9rem;
+  color: rgba(253,245,230,0.75);
+  margin-bottom: 4px;
+}
+
+.footer-divider {
+  width: 60px;
+  height: 1px;
+  background: rgba(197,160,89,0.4);
+  margin: 0 auto 16px;
+}
+
+.footer-copy {
+  font-size: 0.78rem;
+  color: rgba(253,245,230,0.4);
+  letter-spacing: 1px;
+}
+.cta-nosotros {
+  background-color: #2D5A3F;
+  color: #FDF5E6;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.cta-nosotros h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.cta-nosotros p {
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  opacity: 0.85;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-cta-primary {
+  background-color: #C5A059;
+  color: #FDF5E6;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-cta-primary:hover {
+  background-color: #FDF5E6;
+  color: #2D5A3F;
+}
+
+.btn-cta-secondary {
+  background-color: transparent;
+  color: #FDF5E6;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: 2px solid #FDF5E6;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-cta-secondary:hover {
+  background-color: #FDF5E6;
+  color: #2D5A3F;
+}
 /* ========================= MEDIA QUERIES ========================= */
 
 /* ----- TABLET: hasta 1024px ----- */

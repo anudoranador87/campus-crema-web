@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - Campus & Crema</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100 10 L177.94 55 V145 L100 190 L22.06 145 V55 Z" fill="#2d5a3f" />
+                <path d="M130 70 A40 40 0 1 0 130 130" fill="none" stroke="#fdf5e6" stroke-width="12" stroke-linecap="round" />
+                <path d="M110 50 L90 100 L115 100 L95 150" fill="none" stroke="#fdf5e6" stroke-width="8" stroke-linejoin="round" stroke-linecap="round" />
+            </svg>
+            <div class="titulo">
+                <h1>Campus & Crema</h1>
+                <h2>Nuestra Historia</h2>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Inicio</a>
+                <a href="carta.html">Carta</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="index.html#contacto">Contacto</a>
+            </nav>
+           
+        </div>
+        <button class="hamburger" id="hamburgerBtn">
+    ☰
+</button>
+    </header>
+
+    <section id="banner">
+        <div class="banner-overlay">
+            <h1>De la biblioteca a la barra</h1>
+            <p>Donde las ideas se tuestan y el talento se extrae gota a gota.</p>
+        </div>
+        <img src="4.png" alt="Café y libros"> </section>
+
+    <section class="laboratorio-sabor">
+        <div class="contenido-laboratorio">
+            <h2>Nuestra Filosofía</h2>
+            <p>Campus & Crema no nació en un plan de negocios, nació en una noche de entrega final. Entendemos que el café no es solo una bebida, es el <strong>combustible</strong> necesario para cambiar el mundo (o al menos para aprobar ese examen de las 8:00 AM).</p>
+            
+            <div class="cards-laboratorio">
+                <article class="card-laboratorio">
+                    <h3>El Origen</h3>
+                    <p>Fundado en Málaga por estudiantes que buscaban algo más que café de máquina. Queríamos un lugar con Wi-Fi rápido, enchufes de sobra y, sobre todo, granos con trazabilidad.</p>
+                </article>
+
+                <article class="card-laboratorio">
+                    <h3>El Compromiso</h3>
+                    <p>Trabajamos con tostadores locales. Creemos en el comercio justo y en la precisión técnica: cada espresso se pesa y cada leche se textura a la temperatura exacta.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="contenedor-cards">
+        <article class="tarjeta-historia">
+            <h2>Los Alquimistas</h2>
+            <img src="1.png" alt="Barista Principal">
+            <h3>Nico - Head Barista</h3>
+            <p>Capaz de hacer latte art mientras recita las leyes de la termodinámica.</p>
+        </article>
+        <article class="tarjeta-historia">
+  <h2>La Ciencia del Sabor</h2>
+  <img src="3.png" alt="Especialista en café">
+  <h3>Marta - Coffee Scientist</h3>
+  <p>Tiene un termómetro en el bolsillo y un cuaderno de catas en la mochila. Si el agua no está a 93°C, lo sabe.</p>
+</article>
+
+        <article class="tarjeta-historia">
+            <h2>Gestión Creativa</h2>
+            <img src="2.png" alt="Fundadora">
+            <h3>Elena - Fundadora</h3>
+            <p>La mente detrás del concepto. Convirtió su obsesión por el café en un refugio para mentes inquietas.</p>
+        </article>
+    </section>
+    
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div>
+                <h4>Campus & Crema</h4>
+                <p>El punto de encuentro de la comunidad universitaria.</p>
+            </div>
+            <div>
+                <h4>Ubicación</h4>
+                <p>Teatinos, Málaga</p>
+            </div>
+        </div>
+        <p>© 2026 - Jose Maria | Programado con cafeína y código limpio.</p>
+        <section class="cta-nosotros">
+  <h2>¿Convencido?</h2>
+  <p>El café está listo. La mesa, también.</p>
+  <div class="cta-buttons">
+    <a href="carta.html" class="btn-cta-primary">Ver nuestra carta</a>
+    <a href="index.html#contacto" class="btn-cta-secondary">Reserva tu mesa</a>
+  </div>
+</section>
+    </footer>
+
+    <script>
+    
+        const hamburger = document.getElementById('hamburgerBtn');
+        const nav = document.querySelector('.nav');
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
