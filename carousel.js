@@ -4,7 +4,12 @@ const imagenes = [
 "FOTO2.jpg",
 "FOTO3.jpg",
 "FOTO4.jpg",
-"FOTO5.jpg"
+"FOTO5.jpg",
+"campus_crema_espacio_1.png",
+"campus_crema_espacio_2.png",
+"campus_crema_v60.png",
+"campus_crema_energy_bowl.png",
+"campus_crema_sourdough.png",
 ];
 
 //CREAMOS EL CONSTRUCTOR
@@ -75,6 +80,7 @@ misSlides(){
         punto.classList.toggle("active", posicion === this.indiceActual)
          })    
      this.numero.innerText = this.indiceActual +1 } 
+     
   //esto va fuera del forEach               
    //NAVEGACION CON LOS CONTROLES
    // estos metodos los controla el boton, no init
@@ -83,27 +89,36 @@ misSlides(){
      if(this.indiceActual === this.imagenes.length)
        { this.indiceActual = 0
               }
+              
      this.actualizarUI();
        }
+    
   anterior(){
     this.indiceActual = this.indiceActual -1;
     if(this.indiceActual === -1)
     {this.indiceActual = this.imagenes.length -1}
       
      this.actualizarUI()  
+    
         
     }
  
   botonEscuchaActiva(){
    this.botonPrev.addEventListener("click", this.anterior.bind(this));
 this.botonNext.addEventListener("click", this.siguiente.bind(this));
+  this.puntito.addEventListener("click", (e) => {
+    if(e.target.classList.contains("indicador")){
+      const indice = Array.from(this.puntito.children).indexOf(e.target);
+      this.indiceActual = indice;
+      this.actualizarUI();}})
+    
     
   }
   
   // llamamos a los selectores
   
-
 }
+
 
  const carousel = new Carousel({
   contenedorMolde: ".mi-slide",
@@ -115,3 +130,4 @@ this.botonNext.addEventListener("click", this.siguiente.bind(this));
    imagenes: imagenes
 })
   
+
