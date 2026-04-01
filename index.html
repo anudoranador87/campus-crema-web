@@ -53,6 +53,7 @@
         <img src="banner-campus.avif" alt="Banner de Campus & Crema">
     </section>
 
+
 <section class="carousel">
   <section class="track"></section>
   <button class="prev-button"><span>&lt;</span></button>
@@ -83,7 +84,10 @@
             <img src="horarios.png" alt="Horarios">
             <p>Lun - Vie: 07:30 - 21:00<br>Sáb - Dom: 09:00 - 15:00</p>
             <a href="#">Ver horarios</a>
+
         </article>
+      
+
     </section>
 
    <section class="laboratorio-sabor">
@@ -103,6 +107,7 @@
           <li><strong>V60 / Filtrado</strong> – Matices frutales y florales para paladares exigentes.</li>
           <li><strong>Flat White</strong> – Doble shot de espresso con leche micro-cremada.</li>
         </ul>
+        <a href="carta.html" class="btn-carta">Ver nuestra carta completa</a>
       </article>
 
       <!-- Combustible Cerebral -->
@@ -113,6 +118,7 @@
           <li><strong>Energy Bowl</strong> – Yogur griego, granola y frutas de temporada.</li>
           <li><strong>Cookie Laboratorio</strong> – Chocolate 70% con sal de Maldon.</li>
         </ul>
+        <a href="carta.html" class="btn-carta">Ver nuestra carta completa</a> 
       </article>
 
     </div>
@@ -126,22 +132,36 @@
 <section class="reserva">
   <div class="form-container">
     <h2>Reserva tu espacio</h2>
-    <form>
+    <form
+  action="https://formspree.io/f/xzdkgevy"
+  method="POST">
       <label for="nombre">Nombre:</label>
       <input type="text" id="nombre" name="nombre" required>
+      <label for="apellido">Apellido:</label>
+      <input type="text" id="apellido" name="apellido" required>
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono" required>
+      
 
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required>
-
+      
       <label for="fecha">Fecha:</label>
       <input type="date" id="fecha" name="fecha">
 
       <label for="hora">Hora:</label>
       <input type="time" id="hora" name="hora">
-
+      <label for="tipo">Tipo de reserva:</label>
+      <select id="tipo" name="tipo">
+        <option value="estudio">Espacio de estudio</option>
+        <option value="reunion">Reunión de grupo</option>
+        <option value="evento">Evento especial</option>
+      </select>
       <label for="personas">Personas:</label>
       <input type="number" id="personas" name="personas" min="1" max="10">
-
+      <label for="comentarios">Comentarios adicionales:</label>
+<textarea id="comentarios" name="comentarios" rows="5" cols="66"></textarea>
+    
       <button type="submit">Reservar</button>
     </form>
   </div>
@@ -159,6 +179,8 @@
       <h4>Contacto</h4>
       <p>Málaga, España</p>
       <p>info@campuscrema.com</p>
+      <p>+34 123 456 789</p>
+
     </div>
     <div>
       <h4>Horarios</h4>
