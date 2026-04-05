@@ -1,75 +1,161 @@
-## 🎓 Contexto del Proyecto
-Este es un **proyecto ficticio** desarrollado como parte de mi formación en el **Certificado Profesional de Desarrollo Front-End de Meta**. 
+# Campus & Crema
 
-Aunque la marca "Campus & Crema" es una creación propia, el código y los desafíos técnicos (como la maquetación semántica y el diseño responsive) forman parte de las prácticas y objetivos del curso para dominar las bases del desarrollo web moderno.
+🇪🇸 [Español](#español) · 🇬🇧 [English](#english)
 
-## 🛠️ Estado del Proyecto
-Actualmente el proyecto está **en desarrollo**. Lo estoy utilizando como un entorno de prácticas real para aplicar los conceptos de:
-* Estructura HTML profesional.
-* Estilos CSS avanzados y Flexbox.
-* Control de versiones con Git/GitHub.
+🌐 **[Ver en vivo / Live](https://anudoranador87.github.io/campus-crema-web/)**
 
-* ## 🛠️ Mejoras de Estilo y Maquetación
-
-Se han realizado ajustes en la estructura CSS global para mejorar la experiencia de usuario y la consistencia visual del sitio.
-
-### Cambios realizados 07/02/2026:
-
-* **Centrado del Contenido Principal:** Se configuró la etiqueta <main> con un ancho del 80 y margin: 0 auto para garantizar que el contenido esté siempre alineado al centro en pantallas grandes.
-* **Reseteo de Estilos (Reset CSS):** * Se eliminó el padding por defecto del navegador para tener un control total del espacio.
-    * Se eliminó el `margin` del body para evitar huecos blancos en los bordes.
-* **Control de Desbordamiento:** Se implementó overflow-x: hidden` para prevenir el scroll horizontal accidental, asegurando una navegación fluida en dispositivos móviles.
-
-### Cambios realizados 08/02/2026:
-
- **Layout Adaptable con CSS Grid: Se implementó un sistema de rejilla en la carta utilizando repeat(auto-fit, minmax(300px, 1fr)) para que el contenido se reorganice automáticamente según el ancho de la pantalla sin usar Media Queries.
-
- **Identidad Visual y Gráficos: Se integró el logotipo mediante SVG nativo y se definió una paleta de colores coherente con la marca, optimizando la carga y la escalabilidad de las imágenes.
-
- **Estructura de Captura de Datos: Se desarrolló un formulario de reservas funcional dentro de un fieldset, con etiquetas label vinculadas y validaciones de entrada (minlength, required) para asegurar la calidad de la información.
-
- **Semántica y Mantenibilidad: Se organizó el documento con HTML5 semántico y se modularizaron los estilos en styles.css para facilitar futuras actualizaciones del código.
 ---
 
-* ## 🛠️ Mejoras de Estilo y Maquetación
+## Español
 
-Se han realizado ajustes en la estructura CSS global para mejorar la experiencia de usuario y la consistencia visual del sitio.
+### Qué es esto
 
-### Cambios realizados 07/02/2026:
+Web completa para una cafetería de especialidad ficticia. Proyecto de práctica real — no un ejercicio de tutorial.
 
-* **Centrado del Contenido Principal:** Se configuró la etiqueta <main> con un ancho del 80 y margin: 0 auto para garantizar que el contenido esté siempre alineado al centro en pantallas grandes.
-* **Reseteo de Estilos (Reset CSS):** * Se eliminó el padding por defecto del navegador para tener un control total del espacio.
-    * Se eliminó el `margin` del body para evitar huecos blancos en los bordes.
-* **Control de Desbordamiento:** Se implementó overflow-x: hidden` para prevenir el scroll horizontal accidental, asegurando una navegación fluida en dispositivos móviles.
+Construida para aplicar OOP, manipulación del DOM, validación de formularios y diseño responsive en un contexto concreto, con páginas reales, contenido real y lógica real.
 
-### Cambios realizados 08/02/2026:
-
- **Layout Adaptable con CSS Grid: Se implementó un sistema de rejilla en la carta utilizando repeat(auto-fit, minmax(300px, 1fr)) para que el contenido se reorganice automáticamente según el ancho de la pantalla sin usar Media Queries.
-
- **Identidad Visual y Gráficos: Se integró el logotipo mediante SVG nativo y se definió una paleta de colores coherente con la marca, optimizando la carga y la escalabilidad de las imágenes.
-
- **Estructura de Captura de Datos: Se desarrolló un formulario de reservas funcional dentro de un fieldset, con etiquetas label vinculadas y validaciones de entrada (minlength, required) para asegurar la calidad de la información.
-
- **Semántica y Mantenibilidad: Se organizó el documento con HTML5 semántico y se modularizaron los estilos en styles.css para facilitar futuras actualizaciones del código.
 ---
 
+### Clonar y ver en local
 
+```bash
+git clone https://github.com/anudoranador87/campus-crema-web.git
+cd campus-crema-web
+open index.html
+```
 
-## 🚀 Últimas Mejoras y Actualizaciones 18/02/2026
+Sin npm. Sin build tools. Sin dependencias. Abre directamente en el navegador.
 
-Se han realizado una serie de optimizaciones en la interfaz de usuario para mejorar la navegación y la experiencia estética del sitio:
+---
 
-### 1. Navegación Persistente (Sticky Menu)
-- **Menú Fijo:** Se ha implementado un sistema de navegación `sticky` mediante CSS (`position: sticky`), permitiendo que el menú permanezca visible en la parte superior durante el scroll.
-- **Optimización del Header:** Se ha ajustado el tamaño del encabezado para garantizar una **mejor visibilidad** de los elementos de navegación sin sacrificar espacio útil de pantalla.
+### Qué hay dentro
 
-### 2. Estructura de Contenidos
-- **Secciones Centrales:** Se han añadido nuevas secciones en el cuerpo principal de la página para organizar mejor la información del servicio de recarga.
-- **Jerarquía Visual:** Se ha mejorado el espaciado y la alineación de estos bloques para facilitar una lectura rápida y cómoda.
+```
+campus-crema-web/
+├── index.html          # Página principal — hero, carousel, menú destacado, formulario
+├── carta.html          # Carta completa con secciones y filtros
+├── nosotros.html       # Página de equipo y filosofía
+├── css/
+│   └── styles.css      # Estilos globales con CSS Custom Properties
+└── js/
+    └── main.js         # Lógica del carousel, menú hamburguesa y validación
+```
 
-### 3. Localización y Mapas
-- **Header con Mapa:** Se ha integrado y rediseñado una sección de mapa dentro del área superior.
-- **Mejora de UX en Contacto:** Esta sección ahora permite a los usuarios localizar el punto de recarga en Teatinos de forma visual e inmediata, mejorando la tasa de conversión y la utilidad de la página.
+---
 
+### Qué hace cada pieza de JavaScript
 
-Creado con pasión por **Jose María** 06- 2026
+**Menú hamburguesa**  
+`getElementById` + `classList.toggle('active')`. El botón vive fuera del `<nav>` — decisión deliberada para que las media queries no lo oculten junto al menú.
+
+**Carousel de imágenes**  
+Clase `Carousel` en OOP vanilla. Estado centralizado en `indiceActual`. Métodos `siguiente()`, `anterior()` y `actualizarUI()`. Indicadores con `classList.toggle('active', condición)`. Transición con `translateX`. Listeners con `bind(this)` para mantener el contexto correcto.
+
+**Validación de formulario**  
+Clase `ValidarFormulario`. Constructor con `miFormulario`, `misInputs` y `esCorrecto`. Event listeners `blur` e `input` por cada campo con `forEach`. Método `validarCampos()` con comprobación de campo vacío y regex de email. Métodos `showError()` y `showSuccess()` con creación dinámica de spans en el DOM usando `input.after()`.
+
+---
+
+### Decisiones técnicas
+
+**OOP sobre funciones sueltas.** La validación y el carousel viven en clases, no en funciones globales. Objetivo: practicar encapsulación real antes de llegar a React.
+
+**Sin librerías de UI.** Cada animación y transición está escrita a mano. El carousel no usa Swiper. La validación no usa una librería externa. Decisión pedagógica: entender antes de abstraer.
+
+**CSS Custom Properties para theming.** Variables definidas en `:root` para colores, tipografía y espaciado.
+
+**`input.after()` para inserción de errores.** Inserción precisa en el DOM sin romper el layout del formulario.
+
+---
+
+### Stack
+
+`HTML5` · `CSS3 (Custom Properties, Flexbox, Grid)` · `JavaScript ES6+ (OOP)` · `GitHub Pages`
+
+---
+
+### Autor
+
+Jose Aparicio — Frontend developer en transición desde hostelería.
+
+📧 josemaparicio87@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/joseaparicio87/)  
+🐙 [GitHub](https://github.com/anudoranador87)
+
+---
+
+## English
+
+### What this is
+
+A complete website for a fictional specialty coffee shop. A real practice project — not a tutorial exercise.
+
+Built to apply OOP, DOM manipulation, form validation, and responsive design in a concrete context: real pages, real content, real logic.
+
+---
+
+### Clone and run locally
+
+```bash
+git clone https://github.com/anudoranador87/campus-crema-web.git
+cd campus-crema-web
+open index.html
+```
+
+No npm. No build tools. No dependencies. Opens directly in the browser.
+
+---
+
+### What's inside
+
+```
+campus-crema-web/
+├── index.html          # Main page — hero, carousel, menu highlights, booking form
+├── carta.html          # Full menu with sections
+├── nosotros.html       # Team and philosophy page
+├── css/
+│   └── styles.css      # Global styles with CSS Custom Properties
+└── js/
+    └── main.js         # Carousel, hamburger menu and form validation logic
+```
+
+---
+
+### What each JavaScript piece does
+
+**Hamburger menu**  
+`getElementById` + `classList.toggle('active')`. The button lives outside the `<nav>` — deliberate decision so media queries don't hide it along with the menu.
+
+**Image carousel**  
+`Carousel` class in vanilla OOP. State centralised in `indiceActual`. Methods `siguiente()`, `anterior()` and `actualizarUI()`. Indicators with `classList.toggle('active', condition)`. Transition via `translateX`. Listeners with `bind(this)` to preserve correct context.
+
+**Form validation**  
+`ValidarFormulario` class. Constructor with `miFormulario`, `misInputs` and `esCorrecto`. `blur` and `input` event listeners per field via `forEach`. `validarCampos()` method with empty field check and email regex. `showError()` and `showSuccess()` methods with dynamic span creation in the DOM using `input.after()`.
+
+---
+
+### Technical decisions
+
+**OOP over loose functions.** Validation and carousel live in classes, not global functions. Goal: practise real encapsulation before reaching React.
+
+**No UI libraries.** Every animation and transition is written by hand. The carousel doesn't use Swiper. Validation doesn't use an external library. Pedagogical decision: understand before abstracting.
+
+**CSS Custom Properties for theming.** Variables defined in `:root` for colours, typography and spacing.
+
+**`input.after()` for error insertion.** Precise DOM insertion without breaking the form layout.
+
+---
+
+### Stack
+
+`HTML5` · `CSS3 (Custom Properties, Flexbox, Grid)` · `JavaScript ES6+ (OOP)` · `GitHub Pages`
+
+---
+
+### Author
+
+Jose Aparicio — Frontend developer transitioning from hospitality.
+
+📧 josemaparicio87@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/joseaparicio87/)  
+🐙 [GitHub](https://github.com/anudoranador87)
