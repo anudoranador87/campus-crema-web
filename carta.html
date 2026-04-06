@@ -37,16 +37,91 @@
             </nav>
              
         </div>
-        <button class="hamburger" id="hamburgerBtn">
-    ☰
+        <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
+    <span>☰</span>
+    <span>✕</span>
 </button>
     </header>
+<section id="simulador-pedido" class="modal">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Crea tu Café Ideal</h2>
+    <div class="opciones-cafe">
+      <div class="opcion-grupo">
+        <h3>Tipo de Café</h3>
+        <img src="ESPRESSO DOBLE.png" alt="Espresso Doble"> 
+        <label><input type="radio" name="tipoCafe" value="espresso" data-precio="2.00" checked> Espresso</label>  
+
+        <img src="V60.png" alt="V60 / Filtrado">
+        <label><input type="radio" name="tipoCafe" value="americano" data-precio="2.50"> Americano</label>  
+
+        <img src="FLAT WHITE.png" alt="Flat White">
+        <label><input type="radio" name="tipoCafe" value="latte" data-precio="3.00"> Latte</label>  
+
+        <img src="CAPUCCINO.png" alt="Capuccino">
+        <label><input type="radio" name="tipoCafe" value="capuccino" data-precio="3.20"> Capuccino</label>  
+
+      </div>
+      <div class="opcion-grupo">
+        <h3>Leche</h3>
+        <img src="LECHE ENTERA.png" alt="Leche Entera">
+        <label><input type="radio" name="tipoLeche" value="entera" data-precio="0.00" checked> Entera</label>  
+
+        <img src="LECHE DESNATADA.png" alt="Leche Desnatada">
+        <label><input type="radio" name="tipoLeche" value="desnatada" data-precio="0.00"> Desnatada</label>  
+
+        <img src="LECHE AVENA.png" alt="Leche Avena">
+        <label><input type="radio" name="tipoLeche" value="avena" data-precio="0.50"> Avena (+0.50€)</label>  
+
+        <img src="LECHE ALMENDRA.png" alt="Leche Almendra">
+        <label><input type="radio" name="tipoLeche" value="almendra" data-precio="0.50"> Almendra (+0.50€)</label>  
+
+      </div>
+      <div class="opcion-grupo">
+        <h3>Extras</h3>
+        <img src="SIROP.png" alt="Sirope">
+        <label><input type="checkbox" name="extra" value="sirope" data-precio="0.30"> Sirope (+0.30€)</label>  
+
+        <img src="CREMA.png" alt="Crema">
+        <label><input type="checkbox" name="extra" value="crema" data-precio="0.40"> Crema (+0.40€)</label>  
+
+        <img src="SHOT EXTRA.png" alt="Shot Extra">
+        <label><input type="checkbox" name="extra" value="extraShot" data-precio="0.70"> Shot Extra (+0.70€)</label>  
+
+      </div>
+    </div>
+    <div class="total-pedido">
+        <img src="TOTAL.png" alt="Total">
+    
+      <h3>Total: <span id="precioTotal">0.00</span>€</h3>
+      <img src="AÑADIR AL PEDIDO.png" alt="Añadir al Pedido">
+      <button id="añadirPedido">Añadir al Pedido</button>
+      <img src="CERRAR.png" alt="Cerrar">
+      <button id="cerrarSimulador">Cerrar</button>
+      
+    </div>
+  </div>
+</section>
+<button id="abrirSimulador">Personaliza tu Café</button>
 
     <!-- ================= MENÚ ================= -->
+    <section class="menu-filtros" aria-label="Filtros de la carta">
+        <div class="filtros-categorias">
+            <button class="filtro-btn activo" type="button" data-filtro="todos">Todo</button>
+            <button class="filtro-btn" type="button" data-filtro="cafe">Café</button>
+            <button class="filtro-btn" type="button" data-filtro="desayunos">Desayunos</button>
+            <button class="filtro-btn" type="button" data-filtro="comidas">Comidas</button>
+            <button class="filtro-btn" type="button" data-filtro="postres">Postres</button>
+        </div>
+        <label for="buscadorCarta" class="label-buscador">Buscar en la carta</label>
+        <input id="buscadorCarta" class="buscador-carta" type="search" placeholder="Ej: latte, brownie, salmón..." />
+        <p id="resultadoFiltros" class="resultado-filtros">Mostrando todos los productos.</p>
+    </section>
+
     <main class="menu-container">
 
         <!-- Extracciones de Precisión -->
-        <section class="columna">
+        <section class="columna" data-categoria="cafe">
             <h2>Extracciones de Precisión</h2>
 
             <div class="item">
@@ -78,7 +153,7 @@
         </section>
 
         <!-- Combustible Cerebral -->
-        <section class="columna">
+        <section class="columna" data-categoria="desayunos">
             <h2>Combustible Cerebral</h2>
 
             <div class="item">
@@ -110,7 +185,7 @@
         </section>
 
         <!-- Comidas -->
-        <section class="columna">
+        <section class="columna" data-categoria="comidas">
             <h2>🥪 Comidas</h2>
 
             <div class="item">
@@ -142,7 +217,7 @@
         </section>
 
         <!-- Postres -->
-        <section class="columna">
+        <section class="columna" data-categoria="postres">
             <h2>🍩 Postres</h2>
 
             <div class="item">
@@ -181,5 +256,8 @@
     </footer>
 
 </div>
+<script src="carta-interactiva.js"></script>
+<script src="script.js"></script>
+<script src="personalizacafe.js"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-const { createElement } = require("react");
 
 // He creado IntersectionObserver para animar tarjetas al aparecer
 document.addEventListener("DOMContentLoaded", () => {
@@ -22,104 +21,101 @@ document.querySelectorAll(".tarjeta-historia").forEach(card => {
 });
 
 
-const btn = document.getElementById("hamburgerBtn");
-const nav = document.querySelector(".nav");
+// common.js
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("hamburgerBtn");
+  const nav = document.querySelector(".nav");
 
-btn.addEventListener("click", () => {
-  nav.classList.toggle("active");
+  if (btn && nav) {
+    btn.addEventListener("click", () => {
+      nav.classList.toggle("active");
+      btn.classList.toggle("active");
+      const expanded = btn.classList.contains("active");
+      btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+      btn.setAttribute("aria-label", expanded ? "Cerrar menú" : "Abrir menú");
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        nav.classList.remove("active");
+        btn.classList.remove("active");
+        btn.setAttribute("aria-expanded", "false");
+        btn.setAttribute("aria-label", "Abrir menú");
+      });
+    });
+  }
 });
-
 
 // VALIDACION DE FORMULARIO
 
-class ValidarFormulario {
-  constructor(selector) {
-    this.miFormulario = document.querySelector(selector);
-    this.misInputs = this.miFormulario.querySelectorAll("input[required], textarea[required]");
-    this.esCorrecto = false;
-    this.init();
-  }
 
   // Método para inicializar el formulario
 
+ class ValidarFormulario {
+  constructor(selector) {
+    this.miFormulario = document.querySelector(selector);
+    this.misInputs = this.miFormulario.querySelectorAll("input[required], textarea[required]");
+    this.mensajeExito = document.createElement("p");
+    this.mensajeExito.classList.add("mensaje-exito");
+    this.miFormulario.appendChild(this.mensajeExito);
+    this.init();
+  }
+
   init() {
-  this.agregaEventListener();  //agrega la escucha de eventos
-  
-  this.miFormulario.addEventListener("submit", (e) => {
-    e.preventDefault(); //evitamos que se recarge la pagina cuando pulsamos submit
-    this.esCorrecto = true;
-    
-    this.misInputs.forEach(input => { //recorremos los inputs y validamos
-      if(!this.validarCampos(input)){//sino es validar campos, es false
-        this.esCorrecto = false;
+    this.agregaEventListener();
+
+    this.miFormulario.addEventListener("submit", async (e) => { // Añadir 'async'
+      e.preventDefault();
+      let esCorrecto = true;
+
+      this.misInputs.forEach(input => {
+        if (!this.validarCampos(input)) {
+          esCorrecto = false;
+        }
+      });
+
+      if (esCorrecto) {
+        this.mensajeExito.textContent = "Enviando formulario...";
+        this.mensajeExito.style.color = "orange";
+        this.mensajeExito.style.display = "block";
+
+        try {
+          const response = await fetch(this.miFormulario.action, {
+            method: this.miFormulario.method,
+            body: new FormData(this.miFormulario),
+            headers: {
+                'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            this.mensajeExito.textContent = "¡Formulario enviado con éxito!";
+            this.mensajeExito.style.color = "green";
+            this.miFormulario.reset();
+            // Opcional: ocultar el mensaje después de unos segundos
+            setTimeout(() => { this.mensajeExito.style.display = "none"; }, 5000);
+          } else {
+            const data = await response.json();
+            if (Object.hasOwnProperty.call(data, 'errors')) {
+              this.mensajeExito.textContent = data["errors"].map(error => error["message"]).join(", ");
+            } else {
+              this.mensajeExito.textContent = "¡Oops! Hubo un problema al enviar el formulario.";
+            }
+            this.mensajeExito.style.color = "red";
+          }
+        } catch (error) {
+          this.mensajeExito.textContent = "Error de red. Por favor, inténtalo de nuevo.";
+          this.mensajeExito.style.color = "red";
+          console.error("Error al enviar el formulario:", error);
+        }
+      } else {
+        this.mensajeExito.style.display = "none"; // Ocultar mensaje de envío si hay errores
       }
     });
-    
-    if (this.esCorrecto) {  //si esta correcto, entonces mensaje exito
-      alert("¡Formulario enviado con éxito!");
-      this.miFormulario.reset();
-    }
-  });
-}
-  
-
-  //metodo para validar cada input
-  validarCampos(input) {
-    const type = input.type;
-    const value = input.value;
-
-    if (value === "") {
-      this.showError(input, "Este campo es obligatorio");
-      return false;
-    }
-
-    if (type === "email") {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(value)) {
-        this.showError(input, "Por favor ingresa un correo válido");
-        return false;
-      }
-    }
-
-    if (type === "password") {
-      if (value.length < 6) {
-        this.showError(input, "La contraseña debe tener al menos 6 caracteres");
-        return false;
-      }
-    }
-
-    if (type === "tel") {
-      const phoneRegex = /^\d{10}$/;
-      if (!phoneRegex.test(value)) {
-        this.showError(input, "Por favor ingresa un número de teléfono válido");
-        return false;
-      }
-    }
-
-    // Si pasa las validaciones anteriores
-    return true; 
   }
 
-  // Métodos para mostrar y limpiar errores
- showError(input,message){
-  if(input.nextElementSibling && input.nextElementSibling.classList.contains("error-message")){
-  input.nextElementSibling.remove();// Evito duplicar mensajes de error
-  }
+  // ... (métodos validarCampos, showError, showSuccess existentes)
+}
 
-  //ya fuera del if, para que se muestre el error aunque no haya uno previo
-  const error1 = document.createElement("span");
-  error1.classList.add("error-message");
-  error1.textContent = message;
-  input.classList.add("input-error");
-  input.after(error1);
-
-}
-//imagina una fila de mesas en el café. nextElementSibling es la mesa que está justo al lado a la derecha de la que señalas.
-showSuccess(input){ 
-  if(input.nextElementSibling && input.nextElementSibling.classList.contains("error-message")){
-    input.nextElementSibling.remove();
-  }
-  input.classList.remove("input-error"); 
-  input.classList.add("input-success"); 
-}
-}
+// Instanciar la validación del formulario
+new ValidarFormulario(".reserva form");
