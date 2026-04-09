@@ -29,24 +29,41 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btn && nav) {
     btn.addEventListener("click", () => {
       nav.classList.toggle("active");
-      btn.classList.toggle("active");
-      const expanded = btn.classList.contains("active");
-      btn.setAttribute("aria-expanded", expanded ? "true" : "false");
-      btn.setAttribute("aria-label", expanded ? "Cerrar menú" : "Abrir menú");
-    });
-
-    nav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        nav.classList.remove("active");
-        btn.classList.remove("active");
-        btn.setAttribute("aria-expanded", "false");
-        btn.setAttribute("aria-label", "Abrir menú");
-      });
     });
   }
 });
 
-// VALIDACION DE FORMULARIO
+document.addEventListener("DOMContentLoaded", () => {
+  const copyBtn = document.getElementById("copiarDireccion");
+  const direccion = document.getElementById("direccion-texto");
+  const btnTop = document.getElementById("btn-top");
+
+  if (copyBtn && direccion && navigator.clipboard) {
+    copyBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(direccion.textContent || "");
+        copyBtn.textContent = "Direccion copiada";
+        setTimeout(() => {
+          copyBtn.textContent = "Copiar dirección";
+        }, 1500);
+      } catch (error) {
+        console.error("No se pudo copiar la dirección:", error);
+      }
+    });
+  }
+
+  if (btnTop) {
+    window.addEventListener("scroll", () => {
+      btnTop.classList.toggle("visible", window.scrollY > 320);
+    });
+
+    btnTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+});
+
+
 
 
   // Método para inicializar el formulario

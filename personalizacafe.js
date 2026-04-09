@@ -61,6 +61,43 @@ document.addEventListener("DOMContentLoaded", () => {
     marcarSelecciones();
   }
 
+  function obtenerConfiguracionCafe() {
+    const tipoCafeSeleccionado = simuladorModal.querySelector(
+      "input[name='tipoCafe']:checked"
+    );
+    const tipoLecheSeleccionado = simuladorModal.querySelector(
+      "input[name='tipoLeche']:checked"
+    );
+    const extrasSeleccionados = Array.from(
+      simuladorModal.querySelectorAll("input[name='extra']:checked")
+    );
+
+    const nombreTipoCafe =
+      tipoCafeSeleccionado?.closest("label")?.textContent?.trim() || "Cafe";
+    const nombreLeche =
+      tipoLecheSeleccionado?.closest("label")?.textContent?.trim() || "Leche";
+    const extras = extrasSeleccionados.map((extra) =>
+      extra.closest("label")?.textContent?.trim()
+    );
+
+    const nombreFinal =
+      extras.length > 0
+        ? `${nombreTipoCafe} personalizado (${nombreLeche}, ${extras.join(
+            ", "
+          )})`
+        : `${nombreTipoCafe} personalizado (${nombreLeche})`;
+
+    const configKey = `${tipoCafeSeleccionado?.value || "cafe"}-${
+      tipoLecheSeleccionado?.value || "leche"
+    }-${extrasSeleccionados.map((extra) => extra.value).sort().join("_")}`;
+
+    return {
+      nombre: nombreFinal,
+      precio: Number(precioActual.toFixed(2)),
+      configKey
+    };
+  }
+
   function abrirModal() {
     simuladorModal.style.display = "flex";
     document.body.classList.add("modal-open");
@@ -110,6 +147,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   anadirPedidoBtn.addEventListener("click", () => {
+    const cafePersonalizado = obtenerConfiguracionCafe();
+    document.dispatchEvent(
+      new CustomEvent("cafePersonalizadoActualizado", {
+        detail: cafePersonalizado
+      })
+    );
     mostrarConfirmacion();
     setTimeout(cerrarModal, 500);
   });

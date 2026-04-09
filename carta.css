@@ -444,6 +444,166 @@ body.modal-open {
   overflow: hidden;
 }
 
+/* ================= COMANDA INTERACTIVA ================= */
+.comanda-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.comanda-panel {
+  background: #ffffff;
+  border: 1px solid #e2ddd2;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+}
+
+.carta-dinamica {
+  display: grid;
+  gap: 14px;
+}
+
+.carta-categoria h3 {
+  color: var(--color-principal);
+  margin-bottom: 8px;
+}
+
+.dish-btn {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border: 1px solid #d8d3c6;
+  border-radius: 8px;
+  background: #fffdfa;
+  cursor: pointer;
+}
+
+.dish-btn:hover {
+  border-color: var(--color-secundario);
+}
+
+.ticket-items {
+  list-style: none;
+  margin-bottom: 14px;
+}
+
+.ticket-item,
+.ticket-vacio {
+  display: grid;
+  grid-template-columns: 1.8fr 0.6fr 0.8fr auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid #efebdf;
+}
+
+.ticket-vacio {
+  grid-template-columns: 1fr;
+  color: #666;
+  font-style: italic;
+}
+
+.ticket-item button {
+  border: 1px solid #d0cabd;
+  background: #fff;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.totales input[type="range"] {
+  width: 100%;
+  margin: 8px 0 10px;
+}
+
+#btn-enviar {
+  margin-top: 12px;
+  background-color: #2d5a3f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+#btn-enviar:hover {
+  background-color: #3e7a5a;
+}
+
+.historial-comandas {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.historial-comandas li {
+  background: #fffdfa;
+  border: 1px solid #e9e2d4;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+/* ================= FAQ ACORDEON ================= */
+.faq-panel {
+  background: #ffffff;
+  border: 1px solid #e2ddd2;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+}
+
+.faq-panel h2 {
+  color: var(--color-principal);
+  margin-bottom: 12px;
+}
+
+.faq-item {
+  border-top: 1px solid #eee6d8;
+}
+
+.faq-item:last-child {
+  border-bottom: 1px solid #eee6d8;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-principal);
+  padding: 14px 6px;
+  position: relative;
+}
+
+.faq-question::after {
+  content: "+";
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-secundario);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.faq-question[aria-expanded="true"]::after {
+  content: "-";
+}
+
+.faq-answer {
+  padding: 0 6px 14px;
+  color: #4f4a43;
+}
+
 /* ================= FOOTER ================= */
 footer {
     text-align: center;
@@ -462,6 +622,10 @@ footer {
 @media (max-width: 900px) {
     .menu-container {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .comanda-layout {
+      grid-template-columns: 1fr;
     }
 
     .logo-container {

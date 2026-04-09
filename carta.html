@@ -30,7 +30,7 @@
 
             <nav class="nav" aria-label="Navegación principal">
                
-                <a href="#espacio">Inicio</a>
+                <a href="index.html">Inicio</a>
                 <a href="carta.html">Carta</a>
                 <a href="nosotros.html">NOSOTROS</a>
                 <a href="#contacto">Contacto</a>
@@ -102,7 +102,6 @@
     </div>
   </div>
 </section>
-<button id="abrirSimulador">Personaliza tu Café</button>
 
     <!-- ================= MENÚ ================= -->
     <section class="menu-filtros" aria-label="Filtros de la carta">
@@ -250,6 +249,77 @@
 
     </main>
 
+    <!-- ================= COMANDA INTERACTIVA ================= -->
+    <section class="comanda-layout" aria-label="Comanda interactiva">
+        <article class="comanda-panel">
+            <h2>Pide a domicilio</h2>
+            <p>Haz click en un plato para añadirlo al ticket.</p>
+            <div id="carta" class="carta-dinamica"></div>
+        </article>
+
+        <article class="comanda-panel">
+            <h2>Ticket</h2>
+            <ul id="ticket-items" class="ticket-items"></ul>
+
+            <div class="totales">
+                <p>IVA aplicado: <strong><span id="iva-pct">10</span>%</strong></p>
+
+                <p>Subtotal: <strong><span id="subtotal">0.00</span> €</strong></p>
+                <p>IVA: <strong><span id="iva-euros">0.00</span> €</strong></p>
+                <p>Total: <strong><span id="total">0.00</span> €</strong></p>
+            </div>
+
+            <button id="btn-enviar" type="button">Checkout</button>
+            <button id="abrirSimulador" type="button">Personaliza tu Café</button>
+        </article>
+    </section>
+
+    <section class="comanda-panel" aria-label="Historial de comandas">
+        <h2>Historial de comandas</h2>
+        <ul id="historial-comandas" class="historial-comandas"></ul>
+    </section>
+
+    <!-- ================= FAQ ACORDEÓN ================= -->
+    <section class="faq-panel" aria-label="Preguntas frecuentes">
+        <h2>Preguntas frecuentes</h2>
+
+        <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+                ¿Cuál es el horario de Campus & Crema?
+            </button>
+            <div class="faq-answer" hidden>
+                <p>Lunes a viernes de 07:30 a 21:00, y sábado a domingo de 09:00 a 15:00.</p>
+            </div>
+        </article>
+
+        <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+                ¿Hacéis envíos a domicilio?
+            </button>
+            <div class="faq-answer" hidden>
+                <p>Sí, puedes hacer tu pedido en la sección de checkout y te mostraremos las zonas disponibles.</p>
+            </div>
+        </article>
+
+        <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+                ¿El IVA está incluido en el total?
+            </button>
+            <div class="faq-answer" hidden>
+                <p>Sí, en esta carta se aplica IVA fijo del 10% y el total final ya lo incluye.</p>
+            </div>
+        </article>
+
+        <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+                ¿Tenéis opciones para intolerancias?
+            </button>
+            <div class="faq-answer" hidden>
+                <p>Contamos con alternativas de leche vegetal y opciones sin ingredientes concretos bajo consulta.</p>
+            </div>
+        </article>
+    </section>
+
     <!-- ================= FOOTER ================= -->
     <footer>
         <p>&copy; 2026 Café Crema - Jose María Web Developer</p>
@@ -257,6 +327,7 @@
 
 </div>
 <script src="carta-interactiva.js"></script>
+<script src="carta-comanda.js"></script>
 <script src="script.js"></script>
 <script src="personalizacafe.js"></script>
 </body>

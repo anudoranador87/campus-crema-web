@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
+
 <body>
 
     <!-- ========================= HEADER ========================= -->
@@ -35,20 +36,27 @@
                 <a href="carta.html">Carta</a>
                 <a href="nosotros.html">NOSOTROS</a>
                 <a href="#contacto">Contacto</a>
+                
             </nav>
              
         </div>
         <button class="hamburger" id="hamburgerBtn">
-    ☰
+        <span>☰</span>
+        <span>✕</span>
 </button>
     </header>
 
     <!-- ========================= BANNER ========================= -->
     <!-- He reducido la altura para que sea alargado y elegante, manteniendo ancho completo -->
+    <section id="espacio"></section>
     <section id="banner">
         <div class="banner-overlay">
             <h1>Bienvenido a Campus & Crema</h1>
             <p>El café que potencia tu creatividad y concentración</p>
+            <div class="hero-cta">
+                <a href="carta.html" class="btn-cta-primary">Ver carta</a>
+                <a href="#contacto" class="btn-cta-secondary">Reservar mesa</a>
+            </div>
         </div>
         <img src="banner-campus.avif" alt="Banner de Campus & Crema">
     </section>
@@ -60,6 +68,43 @@
   <button class="next-button"><span>&gt;</span></button>
   <span class="numero-contador"></span>
   <section class="puntito"></section>
+</section>
+
+<section class="campus-benefits">
+  <h2>Diseñado para universitarios</h2>
+  <div class="benefits-grid">
+    <article class="benefit-item">
+      <h3>WiFi de alto rendimiento</h3>
+      <p>Conexión estable para clases online, proyectos y reuniones de equipo.</p>
+    </article>
+    <article class="benefit-item">
+      <h3>Enchufes en cada zona</h3>
+      <p>Olvídate de quedarte sin batería durante sesiones largas de estudio.</p>
+    </article>
+    <article class="benefit-item">
+      <h3>Ambiente productivo</h3>
+      <p>Mesas amplias, buena luz y música suave para mantener el foco.</p>
+    </article>
+  </div>
+</section>
+
+<section class="resenas-home">
+  <h2>La comunidad opina</h2>
+  <p class="rating">4.8/5 de valoración media</p>
+  <div class="resenas-grid">
+    <article class="resena-item">
+      <p>"El mejor sitio para estudiar en Teatinos. Café buenísimo."</p>
+      <h4>— Lucía</h4>
+    </article>
+    <article class="resena-item">
+      <p>"Me encanta el ambiente y siempre hay hueco para trabajar."</p>
+      <h4>— Pablo</h4>
+    </article>
+    <article class="resena-item">
+      <p>"El brunch y la atención del equipo son de 10."</p>
+      <h4>— Sara</h4>
+    </article>
+  </div>
 </section>
 
 
@@ -84,6 +129,8 @@
             <img src="horarios.png" alt="Horarios">
             <p>Lun - Vie: 07:30 - 21:00<br>Sáb - Dom: 09:00 - 15:00</p>
             <a href="#">Ver horarios</a>
+            <a href="#">Reserva tu mesa</a>
+          
 
         </article>
       
@@ -95,6 +142,7 @@
   <div class="contenido-laboratorio">
     <h2>El Laboratorio de Sabor</h2>
     <p>Seleccionamos cada grano bajo estrictos estándares de calidad para potenciar tu rendimiento.</p>
+   
 
     <!-- Sub-secciones de bebidas y comidas -->
     <div class="cards-laboratorio">
@@ -108,6 +156,7 @@
           <li><strong>Flat White</strong> – Doble shot de espresso con leche micro-cremada.</li>
         </ul>
         <a href="carta.html" class="btn-carta">Ver nuestra carta completa</a>
+      
       </article>
 
       <!-- Combustible Cerebral -->
@@ -170,17 +219,25 @@
     <!-- ========================= FOOTER ========================= -->
   <footer class="main-footer">
   <section id="contacto">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18..." 
-      width="100%" height="200" style="border:0; border-radius:10px;" loading="lazy"></iframe>
+    <div class="mapa-panel">
+      <h3>Encuéntranos en Teatinos</h3>
+      <p id="direccion-texto">Blvr. Louis Pasteur, 35, Puerto de la Torre, 29010 Málaga</p>
+      <div class="mapa-acciones">
+        <button id="copiarDireccion" type="button">Copiar dirección</button>
+        <a href="https://maps.google.com/?q=Blvr.+Louis+Pasteur,+35,+29010+M%C3%A1laga" target="_blank" rel="noopener noreferrer">Abrir en Google Maps</a>
+        <a href="tel:+34123456789">Llamar</a>
+      </div>
+      <iframe src="https://www.google.com/maps?q=Blvr.%20Louis%20Pasteur%2035%2C%20M%C3%A1laga&output=embed"
+        width="100%" height="260" style="border:0; border-radius:10px;" loading="lazy"></iframe>
+    </div>
   </section>
 
   <div class="footer-content">
     <div>
       <h4>Contacto</h4>
-      <p>Málaga, España</p>
+      <p>Teatinos, Málaga</p>
       <p>info@campuscrema.com</p>
       <p>+34 123 456 789</p>
-
     </div>
     <div>
       <h4>Horarios</h4>
@@ -188,15 +245,24 @@
       <p>Sáb - Dom: 09:00 - 15:00</p>
     </div>
     <div>
-      <h4>Síguenos</h4>
-      <p>Instagram</p>
-      <p>TikTok</p>
+      <h4>Enlaces rápidos</h4>
+      <p><a href="carta.html">Carta</a></p>
+      <p><a href="nosotros.html">Nosotros</a></p>
+      <p><a href="#contacto">Cómo llegar</a></p>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <p>Aviso legal</p>
+      <p>Política de privacidad</p>
+      <p>Cookies</p>
     </div>
   </div>
 
   <div class="footer-divider"></div>
   <p class="footer-copy">© 2026 — Jose Maria · Programado con cafeína y código limpio.</p>
 </footer>
+
+<button id="btn-top" type="button" aria-label="Volver arriba">↑</button>
 
 </body>
 <script src="script.js"></script>
