@@ -655,6 +655,20 @@ header {
   color: #2D5A3F;
 }
 
+
+/* ========================= WEATHER WIDGET ========================= */
+#weather-widget {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
 /* ========================= NOSOTROS EXTRA ========================= */
 .origen-cafe,
 .valores-panel,
