@@ -1,5 +1,9 @@
 //ARRAY DE IMAGENES
 const imagenes = [
+"new_carousel_1.png",
+"new_carousel_2.png",
+"new_carousel_3.png",
+"new_carousel_4.png",
 "FOTO1.jpg",
 "FOTO2.jpg",
 "FOTO3.jpg",
